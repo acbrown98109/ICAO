@@ -3,117 +3,155 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>ICAO Contact Directory – Email Generator</title>
+<title>SAC Contact Directory – Email Generator</title>
 <style>
 *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  /* ICAO / UN Official Color Palette */
-  --icao-navy: #002D62; 
-  --icao-blue: #005BBB;
-  --icao-accent: #0085CA;
-  --icao-light: #EBF3FA;
-  --gray-bg: #F4F6F9;
-  --gray-border: #CFD8DC;
-  --text-main: #263238;
-  --text-muted: #546E7A;
+  /* Official Institutional Color Palette */
+  --sac-dark-blue: #003b75; 
+  --sac-logo-blue: #0063a6;
+  --sac-active-bg: #e1f0fa;
+  --sac-light-gray: #f5f7f9;
+  --gray-border: #e0e0e0;
+  --text-main: #333333;
+  --text-muted: #666666;
   --white: #FFFFFF;
-  --alert-bg: #FFF3E0;
-  --alert-text: #E65100;
-  --alert-border: #FFB74D;
-  --success-bg: #E8F5E9;
-  --success-text: #1B5E20;
+  --alert-bg: #fff3cd;
+  --alert-text: #856404;
+  --alert-border: #ffeeba;
+  --success-bg: #d4edda;
+  --success-text: #155724;
 }
 
 body {
-  font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background-color: var(--gray-bg);
+  font-family: 'Open Sans', 'Segoe UI', Arial, sans-serif;
+  background-color: var(--white);
   color: var(--text-main);
   line-height: 1.6;
   min-height: 100vh;
   padding-bottom: 60px;
 }
 
-.wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* INSTITUTIONAL HEADER */
+/* TOP UTILITY BAR */
+.top-bar {
+  background-color: var(--sac-dark-blue);
+  height: 32px;
+  width: 100%;
+}
+
+/* MAIN HEADER & LOGO */
 header {
-  background-color: var(--icao-navy);
-  color: var(--white);
-  padding: 48px 20px;
-  text-align: center;
-  border-bottom: 5px solid var(--icao-blue);
-  margin-bottom: 0;
+  background-color: var(--white);
+  padding: 24px 0;
 }
-header h1 {
-  font-size: 2.2rem;
+.header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo-area {
+  display: flex;
+  align-items: center;
+}
+.logo-divider {
+  width: 1px;
+  height: 48px;
+  background-color: var(--gray-border);
+  margin: 0 16px;
+}
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+.brand-sac {
+  font-size: 2rem;
   font-weight: 300;
-  letter-spacing: 1px;
-  margin-bottom: 8px;
-  text-transform: uppercase;
+  color: var(--sac-logo-blue);
+  line-height: 1;
+  letter-spacing: -0.5px;
 }
-header p {
-  font-size: 1rem;
-  color: #B0BEC5;
-  font-weight: 400;
+.brand-sub {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--sac-dark-blue);
+  letter-spacing: 1px;
+  margin-top: 4px;
 }
 
-/* FLAT TABS */
+/* NAV BAR (TABS) */
+.nav-container {
+  border-top: 1px solid var(--gray-border);
+  border-bottom: 1px solid var(--gray-border);
+  background-color: var(--white);
+}
 .tab-bar {
   display: flex;
   flex-wrap: wrap;
-  background: var(--white);
-  border-bottom: 1px solid var(--gray-border);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-  margin-bottom: 32px;
-  justify-content: center;
 }
 .tab-btn {
-  flex: 1;
-  max-width: 280px;
   background: transparent;
-  color: var(--text-muted);
+  color: var(--sac-dark-blue);
   border: none;
-  border-bottom: 3px solid transparent;
-  padding: 16px 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  padding: 18px 24px;
+  font-size: 0.95rem;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
-.tab-btn:hover { color: var(--icao-blue); background: #FAFAFA; }
-.tab-btn.active {
-  color: var(--icao-navy);
-  border-bottom: 3px solid var(--icao-blue);
-  background: var(--white);
+.tab-btn::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid var(--sac-dark-blue);
+  border-bottom: 2px solid var(--sac-dark-blue);
+  transform: rotate(45deg);
+  margin-bottom: 3px;
 }
+.tab-btn:hover { background: var(--sac-light-gray); }
+.tab-btn.active { background: var(--sac-active-bg); }
+
+/* BREADCRUMBS */
+.breadcrumb-bar {
+  padding: 16px 0 24px 0;
+  font-size: 0.85rem;
+  color: var(--sac-dark-blue);
+}
+.breadcrumb-bar a {
+  color: var(--text-main);
+  text-decoration: underline;
+}
+.breadcrumb-bar .chevron {
+  margin: 0 8px;
+  color: var(--text-muted);
+}
+
 .pane { display: none; }
 .pane.active { display: block; }
 
-/* CLEAN CARDS */
+/* FLAT CARDS */
 .card {
   background: var(--white);
   border: 1px solid var(--gray-border);
-  border-radius: 4px;
   padding: 32px;
   margin-bottom: 24px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
 }
 .card h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--icao-navy);
-  border-bottom: 1px solid var(--gray-border);
-  padding-bottom: 12px;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--sac-dark-blue);
   margin-bottom: 24px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 .card h3 {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  color: var(--icao-navy);
+  color: var(--sac-dark-blue);
   margin: 24px 0 12px;
 }
 
@@ -121,28 +159,24 @@ header p {
 .form-row { margin-bottom: 20px; }
 label {
   display: block;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--text-main);
   margin-bottom: 8px;
-  text-transform: uppercase;
 }
 input, select {
   width: 100%;
-  padding: 12px 14px;
-  border: 1px solid var(--gray-border);
-  border-radius: 3px;
+  padding: 10px 12px;
+  border: 1px solid #cccccc;
   font-size: 0.95rem;
   font-family: inherit;
   color: var(--text-main);
-  background: #FAFAFA;
-  transition: all 0.2s;
+  background: var(--white);
 }
 input:focus, select:focus {
   outline: none;
-  border-color: var(--icao-blue);
-  background: var(--white);
-  box-shadow: 0 0 0 3px var(--icao-light);
+  border-color: var(--sac-logo-blue);
+  box-shadow: 0 0 0 1px var(--sac-logo-blue);
 }
 .hint { font-size: 0.8rem; color: var(--text-muted); margin-top: 6px; }
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -152,30 +186,28 @@ input:focus, select:focus {
 .ac-dropdown {
   position: absolute; top: 100%; left: 0; right: 0;
   background: var(--white);
-  border: 1px solid var(--icao-blue);
+  border: 1px solid #cccccc;
   border-top: none;
-  border-radius: 0 0 3px 3px;
   max-height: 240px;
   overflow-y: auto;
   z-index: 100;
   display: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 .ac-dropdown.open { display: block; }
 .ac-item {
-  padding: 12px 16px; cursor: pointer;
-  border-bottom: 1px solid var(--gray-border);
+  padding: 10px 14px; cursor: pointer;
+  border-bottom: 1px solid var(--sac-light-gray);
 }
 .ac-item:last-child { border-bottom: none; }
-.ac-item:hover, .ac-item.focused { background: var(--icao-light); }
-.ac-item .ac-country { font-weight: 600; color: var(--icao-navy); font-size: 0.95rem; }
-.ac-item .ac-title { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+.ac-item:hover, .ac-item.focused { background: var(--sac-active-bg); }
+.ac-item .ac-country { font-weight: 600; color: var(--sac-dark-blue); font-size: 0.95rem; }
+.ac-item .ac-title { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
 
 /* RESULTS AREA */
 .result-box {
-  background: var(--icao-light);
-  border-left: 4px solid var(--icao-blue);
-  border-radius: 3px;
+  background: var(--sac-light-gray);
+  border-left: 4px solid var(--sac-logo-blue);
   padding: 24px;
   margin-top: 24px;
   display: none;
@@ -183,166 +215,184 @@ input:focus, select:focus {
 .result-box.show { display: block; }
 .result-label {
   font-size: 0.75rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 1px;
-  color: var(--icao-navy); margin-bottom: 8px;
+  text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 8px;
 }
 .result-email {
   font-family: 'Consolas', 'Courier New', monospace;
-  font-size: 1.15rem; color: var(--icao-navy);
+  font-size: 1.15rem; color: var(--sac-dark-blue);
   background: var(--white);
-  border: 1px solid var(--gray-border);
-  border-radius: 3px; padding: 14px 16px;
-  word-break: break-all; margin-bottom: 12px;
+  border: 1px solid #cccccc;
+  padding: 12px 16px;
+  word-break: break-all; margin-bottom: 16px;
 }
 .result-alts {
   background: var(--white);
-  border: 1px solid var(--gray-border);
-  border-radius: 3px; padding: 16px; margin-bottom: 16px;
+  border: 1px solid #cccccc;
+  padding: 16px; margin-bottom: 16px;
 }
 .result-alts .alt-row {
   display: flex; flex-direction: column; gap: 4px;
   margin-bottom: 12px; padding-bottom: 12px;
-  border-bottom: 1px solid var(--gray-border);
+  border-bottom: 1px solid var(--sac-light-gray);
 }
 .result-alts .alt-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
 .result-alts .alt-label {
   font-size: 0.75rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted);
+  text-transform: uppercase; color: var(--text-muted);
 }
 .result-alts .alt-addr {
   font-family: 'Consolas', 'Courier New', monospace;
-  font-size: 0.95rem; color: var(--icao-blue);
+  font-size: 0.95rem; color: var(--sac-logo-blue);
   word-break: break-all;
 }
-.result-meta { font-size: 0.85rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 16px;}
-.result-meta strong { color: var(--text-main); }
+.result-meta { font-size: 0.85rem; color: var(--text-main); line-height: 1.8; margin-bottom: 16px;}
+.result-meta strong { color: var(--sac-dark-blue); }
 
 /* ALERTS & INFO BOXES */
 .warn-box {
   background: var(--alert-bg); border: 1px solid var(--alert-border);
-  border-radius: 3px; padding: 14px 16px;
-  font-size: 0.85rem; color: var(--alert-text);
+  padding: 12px 16px; font-size: 0.85rem; color: var(--alert-text);
   margin-top: 12px; display: none;
 }
 .warn-box.show { display: block; }
 .lookup-box {
-  background: var(--icao-light); border: 1px solid #BBDEFB;
-  border-radius: 3px; padding: 16px; font-size: 0.85rem;
-  color: var(--icao-navy); margin-top: 12px; display: none; line-height: 1.6;
+  background: var(--sac-light-gray); border: 1px solid #cccccc;
+  padding: 16px; font-size: 0.85rem;
+  color: var(--text-main); margin-top: 12px; display: none; line-height: 1.6;
 }
 .lookup-box.show { display: block; }
-.lookup-box a { color: var(--icao-blue); font-weight: 600; text-decoration: none;}
+.lookup-box a { color: var(--sac-logo-blue); font-weight: 600; text-decoration: none;}
 .lookup-box a:hover { text-decoration: underline; }
 .info-box {
-  background: var(--gray-bg); border-left: 4px solid var(--text-muted);
-  border-radius: 3px; padding: 16px 20px; font-size: 0.9rem;
+  background: var(--sac-light-gray); border-left: 4px solid var(--text-muted);
+  padding: 16px 20px; font-size: 0.9rem;
   color: var(--text-main); line-height: 1.7; margin-bottom: 24px;
 }
 
-/* BUTTONS */
-.btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+/* SQUARED INSTITUTIONAL BUTTONS */
+.btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
 .btn {
-  padding: 12px 24px; border: none; border-radius: 3px;
-  font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+  padding: 10px 20px; border: 1px solid transparent;
+  font-size: 0.9rem; font-weight: 700;
   cursor: pointer; transition: background 0.2s;
-  display: inline-flex; align-items: center; gap: 8px;
 }
-.btn-primary { background: var(--icao-navy); color: var(--white); }
-.btn-primary:hover { background: #001B3A; }
-.btn-teal { background: var(--icao-blue); color: var(--white); }
-.btn-teal:hover { background: #004C99; }
-.btn-outline { background: transparent; border: 1px solid var(--icao-navy); color: var(--icao-navy); }
-.btn-outline:hover { background: var(--icao-light); }
+.btn-primary { background: var(--sac-logo-blue); color: var(--white); }
+.btn-primary:hover { background: var(--sac-dark-blue); }
+.btn-teal { background: var(--sac-dark-blue); color: var(--white); }
+.btn-teal:hover { background: #002244; }
+.btn-outline { background: transparent; border-color: #cccccc; color: var(--text-main); }
+.btn-outline:hover { background: var(--sac-light-gray); }
+
 .toast {
-  display: none; background: var(--success-bg); border: 1px solid #A5D6A7;
-  color: var(--success-text); border-radius: 3px; padding: 12px 16px;
-  font-weight: 600; font-size: 0.85rem; margin-top: 12px; text-transform: uppercase;
+  display: none; background: var(--success-bg); border: 1px solid #c3e6cb;
+  color: var(--success-text); padding: 10px 16px;
+  font-weight: 600; font-size: 0.85rem; margin-top: 12px;
 }
 .toast.show { display: block; }
 
 /* BADGES */
 .badge {
-  display: inline-block; border-radius: 2px; padding: 3px 8px;
-  font-size: 0.75rem; font-weight: 600; margin-right: 6px;
-  text-transform: uppercase; letter-spacing: 0.5px;
+  display: inline-block; padding: 2px 6px;
+  font-size: 0.7rem; font-weight: 700; margin-right: 6px;
+  text-transform: uppercase; background: var(--sac-light-gray); color: var(--text-muted);
+  border: 1px solid #cccccc;
 }
-.badge-blue { background: var(--icao-light); color: var(--icao-navy); border: 1px solid #BBDEFB; }
-.badge-green { background: var(--success-bg); color: var(--success-text); border: 1px solid #A5D6A7; }
-.badge-gray { background: #ECEFF1; color: var(--text-muted); border: 1px solid var(--gray-border); }
+.badge-blue { background: var(--sac-active-bg); color: var(--sac-dark-blue); border-color: #b8daff; }
+.badge-green { background: var(--success-bg); color: var(--success-text); border-color: #c3e6cb; }
 
 /* GRID CARDS (DIRECTORY & FORMATS) */
 .fmt-grid, .dir-grid {
   display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-top: 16px;
 }
 .fmt-card, .dir-card {
-  border: 1px solid var(--gray-border); background: var(--gray-bg);
-  border-radius: 3px; padding: 20px;
-  border-top: 3px solid var(--icao-blue);
+  border: 1px solid var(--gray-border); background: var(--white);
+  padding: 20px;
 }
-.fmt-card h4, .dir-card h4 { font-size: 0.95rem; color: var(--icao-navy); margin-bottom: 12px; }
-.fmt-card p, .dir-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 8px; }
+.fmt-card h4, .dir-card h4 { font-size: 0.95rem; color: var(--sac-dark-blue); margin-bottom: 12px; }
+.fmt-card p, .dir-card p { font-size: 0.85rem; color: var(--text-main); line-height: 1.6; margin-bottom: 8px; }
 .fmt-card code {
   display: block; font-family: 'Consolas', monospace; font-size: 0.85rem;
-  color: var(--icao-navy); background: var(--white); border: 1px solid var(--gray-border);
-  border-radius: 3px; padding: 8px 12px; margin-bottom: 12px; word-break: break-all;
+  color: var(--sac-dark-blue); background: var(--sac-light-gray); border: 1px solid var(--gray-border);
+  padding: 8px 12px; margin-bottom: 12px; word-break: break-all;
 }
-.dir-card a { color: var(--icao-blue); text-decoration: none; font-weight: 600; }
+.dir-card a { color: var(--sac-logo-blue); text-decoration: none; }
 .dir-card a:hover { text-decoration: underline; }
 
 .office-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 16px; }
 .office-tile {
   border: 1px solid var(--gray-border); background: var(--white);
-  border-left: 4px solid var(--icao-accent);
-  border-radius: 3px; padding: 20px;
+  border-top: 4px solid var(--sac-logo-blue);
+  padding: 20px;
 }
-.office-tile strong { display: block; color: var(--icao-navy); font-size: 0.95rem; margin-bottom: 10px; }
-.office-tile span { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px; line-height: 1.5; }
-.office-tile a { color: var(--icao-blue); text-decoration: none; font-weight: 600; }
+.office-tile strong { display: block; color: var(--sac-dark-blue); font-size: 0.95rem; margin-bottom: 10px; }
+.office-tile span { display: block; font-size: 0.85rem; color: var(--text-main); margin-bottom: 4px; line-height: 1.5; }
+.office-tile a { color: var(--sac-logo-blue); text-decoration: none; }
 
 /* LISTS & DIVIDERS */
-.step-list { list-style: none; counter-reset: steps; margin-top: 16px; }
-.step-list li { counter-increment: steps; display: flex; gap: 16px; margin-bottom: 20px; }
-.step-list li::before {
-  content: counter(steps);
-  background: var(--icao-light); color: var(--icao-navy); border: 1px solid var(--icao-blue);
-  border-radius: 50%; width: 32px; height: 32px;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 0.9rem; flex-shrink: 0;
-}
-.step-body { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
-.step-body strong { color: var(--text-main); display: block; margin-bottom: 4px; }
+.step-list { list-style: none; margin-top: 16px; padding-left: 20px; }
+.step-list li { margin-bottom: 12px; font-size: 0.9rem; color: var(--text-main); line-height: 1.6; }
+.step-list li strong { color: var(--sac-dark-blue); }
 .section-hr { border: none; border-top: 1px solid var(--gray-border); margin: 32px 0; }
 
-footer { text-align: center; color: var(--text-muted); margin-top: 48px; font-size: 0.85rem; }
-footer strong { color: var(--icao-navy); }
+footer { text-align: center; color: var(--text-muted); margin-top: 48px; font-size: 0.85rem; border-top: 1px solid var(--gray-border); padding-top: 24px; }
 
-@media(max-width: 640px) { .two-col { grid-template-columns: 1fr; } header h1 { font-size: 1.8rem; } }
+@media(max-width: 640px) { 
+  .two-col { grid-template-columns: 1fr; } 
+  .brand-sac { font-size: 1.5rem; } 
+  .tab-btn { width: 100%; border-bottom: 1px solid var(--gray-border); }
+}
 </style>
 </head>
 <body>
 
+<div class="top-bar"></div>
+
 <header>
-  <h1>ICAO Contact Directory</h1>
-  <p>Interactive Member State & Secretariat Routing System</p>
+  <div class="wrap header-flex">
+    <div class="logo-area">
+      <!-- SAC Custom SVG Logo: Open Textbook & Commercial Jet -->
+      <svg width="56" height="56" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Open Book Base (Aviation Law/Studies) -->
+        <path d="M8 44C8 44 18 40 32 44V56C18 52 8 56 8 56V44Z" fill="none" stroke="#003b75" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M56 44C56 44 46 40 32 44V56C46 52 56 56 56 56V44Z" fill="none" stroke="#003b75" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M32 44V56" stroke="#003b75" stroke-width="2.5"/>
+        <!-- Swept-wing Commercial Jet (Flight Ops) -->
+        <path d="M32 10L32 38" stroke="#0063a6" stroke-width="3" stroke-linecap="round"/>
+        <path d="M32 18L14 30L16 32L32 26L48 32L50 30L32 18Z" fill="#0063a6"/>
+        <path d="M32 32L24 38L25 39L32 36L39 39L40 38L32 32Z" fill="#0063a6"/>
+      </svg>
+      <div class="logo-divider"></div>
+      <div class="brand-text">
+        <span class="brand-sac">SAC</span>
+        <span class="brand-sub">Student Aviation Community</span>
+      </div>
+    </div>
+  </div>
 </header>
 
-<div class="tab-bar">
-  <button class="tab-btn active"  onclick="showTab('un-gen',   this)">Member State Contacts</button>
-  <button class="tab-btn"         onclick="showTab('icao-gen', this)">Secretariat Contacts</button>
-  <button class="tab-btn"         onclick="showTab('directory',this)">Full Directory</button>
-  <button class="tab-btn"         onclick="showTab('guide',    this)">Protocol Guide</button>
+<div class="nav-container">
+  <div class="wrap">
+    <div class="tab-bar">
+      <button class="tab-btn active"  onclick="showTab('un-gen',   this)">Member State Contacts</button>
+      <button class="tab-btn"         onclick="showTab('icao-gen', this)">Secretariat Contacts</button>
+      <button class="tab-btn"         onclick="showTab('directory',this)">Full Directory</button>
+      <button class="tab-btn"         onclick="showTab('guide',    this)">Protocol Guide</button>
+    </div>
+  </div>
 </div>
 
 <div class="wrap">
+  <div class="breadcrumb-bar">
+    <a href="#">Homepage</a> <span class="chevron">›</span> Contact Directory
+  </div>
 
 <!-- ════ PANE 1: MEMBER STATE GENERATOR ════ -->
 <div id="un-gen" class="pane active">
 <div class="card">
   <h2>Mission & Delegation Email Generator</h2>
-  <span class="badge badge-blue">Primary Format: firstname.lastname@[country]un.int</span>
-
   <div class="info-box">
-    <strong>Instructions:</strong> Use the live search to locate a known representative, or select a Member State from the dropdown. The system will auto-format the required diplomatic email format based on ICAO and UN standards.
+    <strong>Instructions:</strong> Use the live search to locate a known representative, or select a Member State from the dropdown. The system will auto-format the required diplomatic email format based on official standards.
   </div>
 
   <div class="form-row">
@@ -354,7 +404,7 @@ footer strong { color: var(--icao-navy); }
     </div>
   </div>
 
-  <div style="text-align:center;color:var(--gray-border);margin:16px 0;">— OR —</div>
+  <div style="text-align:center;color:#ccc;margin:16px 0; font-size: 0.8rem;">— OR —</div>
 
   <div class="form-row">
     <label for="un-country">Select Member State</label>
@@ -390,7 +440,7 @@ footer strong { color: var(--icao-navy); }
     <div class="result-label">Primary Routing Address</div>
     <div class="result-email" id="primary-email">—</div>
 
-    <div class="result-label" style="margin-top:16px">Secondary Routing Formats</div>
+    <div class="result-label">Secondary Routing Formats</div>
     <div class="result-alts" id="alt-emails">—</div>
 
     <div class="result-meta" id="un-meta"></div>
@@ -402,7 +452,7 @@ footer strong { color: var(--icao-navy); }
     <div class="btn-row">
       <button class="btn btn-primary" onclick="copyText('primary-email','un-toast')">Copy Address</button>
       <button class="btn btn-teal"    onclick="openMailto()">Open Client</button>
-      <button class="btn btn-outline" onclick="resetForm()">Reset</button>
+      <button class="btn btn-outline" onclick="resetForm()">Reset Form</button>
     </div>
     <div class="toast" id="un-toast">Address Copied to Clipboard</div>
   </div>
@@ -431,8 +481,6 @@ footer strong { color: var(--icao-navy); }
 <div id="icao-gen" class="pane">
 <div class="card">
   <h2>Secretariat & Internal Email Generator</h2>
-  <span class="badge badge-blue">Format: department@icao.int | office@[region].icao.int</span>
-
   <div class="info-box">
     Select the organizational branch to generate the official internal routing address.
   </div>
@@ -458,7 +506,7 @@ footer strong { color: var(--icao-navy); }
     <div class="btn-row">
       <button class="btn btn-primary" onclick="copyText('icao-email-disp','icao-toast')">Copy Address</button>
       <button class="btn btn-teal"    onclick="icaoMailto()">Open Client</button>
-      <button class="btn btn-outline" onclick="resetIcao()">Reset</button>
+      <button class="btn btn-outline" onclick="resetIcao()">Reset Form</button>
     </div>
     <div class="toast" id="icao-toast">Address Copied to Clipboard</div>
   </div>
@@ -565,7 +613,7 @@ footer strong { color: var(--icao-navy); }
   <div class="info-box">
     Download the structural JSON database for integration with external analysis tools or CRM platforms.
   </div>
-  <button class="btn btn-primary" onclick="downloadContactsJSON()">Export Database JSON</button>
+  <button class="btn btn-outline" onclick="downloadContactsJSON()">Export Database JSON</button>
 </div>
 </div><!-- /directory -->
 
@@ -576,10 +624,10 @@ footer strong { color: var(--icao-navy); }
   <h2>Communication Etiquette & Standards</h2>
   <h3>Email Standards</h3>
   <ul class="step-list">
-    <li><div class="step-body"><strong>Format Selection</strong><br>Utilize <code>firstname.lastname@[country]un.int</code> for Mission delegates. Use <code>department@icao.int</code> for Secretariat.</div></li>
-    <li><div class="step-body"><strong>Subject Line Content</strong><br>Include reference IDs, meeting numbers, or specific working paper titles (e.g., "A42-WP/103 - Query regarding Annex 17").</div></li>
-    <li><div class="step-body"><strong>Language Requirements</strong><br>English is the primary operational language. Formal documentation may require French, Spanish, Russian, Arabic, or Chinese.</div></li>
-    <li><div class="step-body"><strong>Response Timelines</strong><br>Standard processing: 5-7 business days. Technical queries: 2-3 weeks.</div></li>
+    <li><strong>Format Selection:</strong> Utilize <code>firstname.lastname@[country]un.int</code> for Mission delegates. Use <code>department@icao.int</code> for Secretariat.</li>
+    <li><strong>Subject Line Content:</strong> Include reference IDs, meeting numbers, or specific working paper titles (e.g., "A42-WP/103 - Query regarding Annex 17").</li>
+    <li><strong>Language Requirements:</strong> English is the primary operational language. Formal documentation may require French, Spanish, Russian, Arabic, or Chinese.</li>
+    <li><strong>Response Timelines:</strong> Standard processing: 5-7 business days. Technical queries: 2-3 weeks.</li>
   </ul>
   
   <hr class="section-hr"/>
@@ -601,14 +649,10 @@ footer strong { color: var(--icao-navy); }
 
 </div><!-- /wrap -->
 
-
 <footer>
-  <p><strong>ICAO Contact Directory System</strong> <strong>By Aaron Brown</strong> <br> Independent interface utilizing data established in 2026. Verify sensitive routing at icao.int.</p>
-  
+  <p><strong>SAC Contact Directory System</strong> <strong>By</strong> Aaron Brown <br> Independent interface utilizing data established in 2026.</p>
 </footer>
 
-<!-- Link to the external JavaScript file -->
 <script src="./script.js"></script>
-
 </body>
 </html>
