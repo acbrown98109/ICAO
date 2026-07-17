@@ -472,7 +472,7 @@ footer strong { color: var(--icao-navy); }
 <div class="card">
   <h2>Headquarters (Montreal)</h2>
   <div class="dir-grid">
-    <div class="dir-card"><h4>Location & Main Switchboard</h4>
+    <div class="dir-card"><h4>Location & Main Phone</h4>
       <p>999 Robert-Bourassa Boulevard<br>Montréal, Québec H3C 5H7, Canada</p>
       <p>Tel: +1 514-954-8219</p>
       <p>Email: <a href="mailto:icaohq@icao.int">icaohq@icao.int</a></p>
@@ -903,7 +903,7 @@ function buildIcaoEmail() {
   document.getElementById('icao-email-disp').textContent = c.email;
   
   let m = `<strong>Target:</strong> ${label}<br>`;
-  if (c.phone) m += `<strong>Switchboard:</strong> ${c.phone}<br>`;
+  if (c.phone) m += `<strong>Phone:</strong> ${c.phone}<br>`;
   if (c.addr) m += `<strong>Location:</strong> ${c.addr}<br>`;
   if (c.note) m += `<strong>Directive:</strong> ${c.note}`;
   
