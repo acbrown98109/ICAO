@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>ICAO Contact Directory – Email Generator</title>
+<style>
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  /* ICAO / UN Official Color Palette */
+  --icao-navy: #002D62; 
+  --icao-blue: #005BBB;
+  --icao-accent: #0085CA;
+  --icao-light: #EBF3FA;
+  --gray-bg: #F4F6F9;
+  --gray-border: #CFD8DC;
+  --text-main: #263238;
+  --text-muted: #546E7A;
+  --white: #FFFFFF;
+  --alert-bg: #FFF3E0;
+  --alert-text: #E65100;
+  --alert-border: #FFB74D;
+  --success-bg: #E8F5E9;
+  --success-text: #1B5E20;
+}
+
+body {
+  font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: var(--gray-bg);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+
+/* INSTITUTIONAL HEADER */
+header {
+  background-color: var(--icao-navy);
+  color: var(--white);
+  padding: 48px 20px;
+  text-align: center;
+  border-bottom: 5px solid var(--icao-blue);
+  margin-bottom: 0;
+}
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+header p {
+  font-size: 1rem;
+  color: #B0BEC5;
+  font-weight: 400;
+}
+
+/* FLAT TABS */
+.tab-bar {
+  display: flex;
+  flex-wrap: wrap;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-border);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  margin-bottom: 32px;
+  justify-content: center;
+}
+.tab-btn {
+  flex: 1;
+  max-width: 280px;
+  background: transparent;
+  color: var(--text-muted);
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 16px 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.tab-btn:hover { color: var(--icao-blue); background: #FAFAFA; }
+.tab-btn.active {
+  color: var(--icao-navy);
+  border-bottom: 3px solid var(--icao-blue);
+  background: var(--white);
+}
+.pane { display: none; }
+.pane.active { display: block; }
+
+/* CLEAN CARDS */
+.card {
+  background: var(--white);
+  border: 1px solid var(--gray-border);
+  border-radius: 4px;
+  padding: 32px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.card h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--icao-navy);
+  border-bottom: 1px solid var(--gray-border);
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.card h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--icao-navy);
+  margin: 24px 0 12px;
+}
+
+/* FORMS */
+.form-row { margin-bottom: 20px; }
+label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+input, select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--gray-border);
+  border-radius: 3px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--text-main);
+  background: #FAFAFA;
+  transition: all 0.2s;
+}
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--icao-blue);
+  background: var(--white);
+  box-shadow: 0 0 0 3px var(--icao-light);
+}
+.hint { font-size: 0.8rem; color: var(--text-muted); margin-top: 6px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* AUTOCOMPLETE */
+.ac-wrap { position: relative; }
+.ac-dropdown {
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--white);
+  border: 1px solid var(--icao-blue);
+  border-top: none;
+  border-radius: 0 0 3px 3px;
+  max-height: 240px;
+  overflow-y: auto;
+  z-index: 100;
+  display: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.ac-dropdown.open { display: block; }
+.ac-item {
+  padding: 12px 16px; cursor: pointer;
+  border-bottom: 1px solid var(--gray-border);
+}
+.ac-item:last-child { border-bottom: none; }
+.ac-item:hover, .ac-item.focused { background: var(--icao-light); }
+.ac-item .ac-country { font-weight: 600; color: var(--icao-navy); font-size: 0.95rem; }
+.ac-item .ac-title { font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+
+/* RESULTS AREA */
+.result-box {
+  background: var(--icao-light);
+  border-left: 4px solid var(--icao-blue);
+  border-radius: 3px;
+  padding: 24px;
+  margin-top: 24px;
+  display: none;
+}
+.result-box.show { display: block; }
+.result-label {
+  font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 1px;
+  color: var(--icao-navy); margin-bottom: 8px;
+}
+.result-email {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 1.15rem; color: var(--icao-navy);
+  background: var(--white);
+  border: 1px solid var(--gray-border);
+  border-radius: 3px; padding: 14px 16px;
+  word-break: break-all; margin-bottom: 12px;
+}
+.result-alts {
+  background: var(--white);
+  border: 1px solid var(--gray-border);
+  border-radius: 3px; padding: 16px; margin-bottom: 16px;
+}
+.result-alts .alt-row {
+  display: flex; flex-direction: column; gap: 4px;
+  margin-bottom: 12px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--gray-border);
+}
+.result-alts .alt-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.result-alts .alt-label {
+  font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted);
+}
+.result-alts .alt-addr {
+  font-family: 'Consolas', 'Courier New', monospace;
+  font-size: 0.95rem; color: var(--icao-blue);
+  word-break: break-all;
+}
+.result-meta { font-size: 0.85rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 16px;}
+.result-meta strong { color: var(--text-main); }
+
+/* ALERTS & INFO BOXES */
+.warn-box {
+  background: var(--alert-bg); border: 1px solid var(--alert-border);
+  border-radius: 3px; padding: 14px 16px;
+  font-size: 0.85rem; color: var(--alert-text);
+  margin-top: 12px; display: none;
+}
+.warn-box.show { display: block; }
+.lookup-box {
+  background: var(--icao-light); border: 1px solid #BBDEFB;
+  border-radius: 3px; padding: 16px; font-size: 0.85rem;
+  color: var(--icao-navy); margin-top: 12px; display: none; line-height: 1.6;
+}
+.lookup-box.show { display: block; }
+.lookup-box a { color: var(--icao-blue); font-weight: 600; text-decoration: none;}
+.lookup-box a:hover { text-decoration: underline; }
+.info-box {
+  background: var(--gray-bg); border-left: 4px solid var(--text-muted);
+  border-radius: 3px; padding: 16px 20px; font-size: 0.9rem;
+  color: var(--text-main); line-height: 1.7; margin-bottom: 24px;
+}
+
+/* BUTTONS */
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+.btn {
+  padding: 12px 24px; border: none; border-radius: 3px;
+  font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+  cursor: pointer; transition: background 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary { background: var(--icao-navy); color: var(--white); }
+.btn-primary:hover { background: #001B3A; }
+.btn-teal { background: var(--icao-blue); color: var(--white); }
+.btn-teal:hover { background: #004C99; }
+.btn-outline { background: transparent; border: 1px solid var(--icao-navy); color: var(--icao-navy); }
+.btn-outline:hover { background: var(--icao-light); }
+.toast {
+  display: none; background: var(--success-bg); border: 1px solid #A5D6A7;
+  color: var(--success-text); border-radius: 3px; padding: 12px 16px;
+  font-weight: 600; font-size: 0.85rem; margin-top: 12px; text-transform: uppercase;
+}
+.toast.show { display: block; }
+
+/* BADGES */
+.badge {
+  display: inline-block; border-radius: 2px; padding: 3px 8px;
+  font-size: 0.75rem; font-weight: 600; margin-right: 6px;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.badge-blue { background: var(--icao-light); color: var(--icao-navy); border: 1px solid #BBDEFB; }
+.badge-green { background: var(--success-bg); color: var(--success-text); border: 1px solid #A5D6A7; }
+.badge-gray { background: #ECEFF1; color: var(--text-muted); border: 1px solid var(--gray-border); }
+
+/* GRID CARDS (DIRECTORY & FORMATS) */
+.fmt-grid, .dir-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-top: 16px;
+}
+.fmt-card, .dir-card {
+  border: 1px solid var(--gray-border); background: var(--gray-bg);
+  border-radius: 3px; padding: 20px;
+  border-top: 3px solid var(--icao-blue);
+}
+.fmt-card h4, .dir-card h4 { font-size: 0.95rem; color: var(--icao-navy); margin-bottom: 12px; }
+.fmt-card p, .dir-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 8px; }
+.fmt-card code {
+  display: block; font-family: 'Consolas', monospace; font-size: 0.85rem;
+  color: var(--icao-navy); background: var(--white); border: 1px solid var(--gray-border);
+  border-radius: 3px; padding: 8px 12px; margin-bottom: 12px; word-break: break-all;
+}
+.dir-card a { color: var(--icao-blue); text-decoration: none; font-weight: 600; }
+.dir-card a:hover { text-decoration: underline; }
+
+.office-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 16px; }
+.office-tile {
+  border: 1px solid var(--gray-border); background: var(--white);
+  border-left: 4px solid var(--icao-accent);
+  border-radius: 3px; padding: 20px;
+}
+.office-tile strong { display: block; color: var(--icao-navy); font-size: 0.95rem; margin-bottom: 10px; }
+.office-tile span { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px; line-height: 1.5; }
+.office-tile a { color: var(--icao-blue); text-decoration: none; font-weight: 600; }
+
+/* LISTS & DIVIDERS */
+.step-list { list-style: none; counter-reset: steps; margin-top: 16px; }
+.step-list li { counter-increment: steps; display: flex; gap: 16px; margin-bottom: 20px; }
+.step-list li::before {
+  content: counter(steps);
+  background: var(--icao-light); color: var(--icao-navy); border: 1px solid var(--icao-blue);
+  border-radius: 50%; width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.9rem; flex-shrink: 0;
+}
+.step-body { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+.step-body strong { color: var(--text-main); display: block; margin-bottom: 4px; }
+.section-hr { border: none; border-top: 1px solid var(--gray-border); margin: 32px 0; }
+
+footer { text-align: center; color: var(--text-muted); margin-top: 48px; font-size: 0.85rem; }
+footer strong { color: var(--icao-navy); }
+
+@media(max-width: 640px) { .two-col { grid-template-columns: 1fr; } header h1 { font-size: 1.8rem; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>ICAO Contact Directory</h1>
+  <p>Interactive Member State & Secretariat Routing System</p>
+</header>
+
+<div class="tab-bar">
+  <button class="tab-btn active"  onclick="showTab('un-gen',   this)">Member State Contacts</button>
+  <button class="tab-btn"         onclick="showTab('icao-gen', this)">Secretariat Contacts</button>
+  <button class="tab-btn"         onclick="showTab('directory',this)">Full Directory</button>
+  <button class="tab-btn"         onclick="showTab('guide',    this)">Protocol Guide</button>
+</div>
+
+<div class="wrap">
+
+<!-- ════ PANE 1: MEMBER STATE GENERATOR ════ -->
+<div id="un-gen" class="pane active">
+<div class="card">
+  <h2>Mission & Delegation Email Generator</h2>
+  <span class="badge badge-blue">Primary Format: firstname.lastname@[country]un.int</span>
+
+  <div class="info-box">
+    <strong>Instructions:</strong> Use the live search to locate a known representative, or select a Member State from the dropdown. The system will auto-format the required diplomatic email syntax based on ICAO and UN standards.
+  </div>
+
+  <div class="form-row">
+    <label for="name-search">Search by Representative Name</label>
+    <div class="ac-wrap">
+      <input id="name-search" type="text" placeholder="Enter last name or first name..." autocomplete="off"
+             oninput="nameSearch(this.value)" onkeydown="acKeydown(event)"/>
+      <div class="ac-dropdown" id="ac-dropdown"></div>
+    </div>
+  </div>
+
+  <div style="text-align:center;color:var(--gray-border);margin:16px 0;">— OR —</div>
+
+  <div class="form-row">
+    <label for="un-country">Select Member State</label>
+    <select id="un-country" onchange="countrySelected()">
+      <option value="">-- Select Member State --</option>
+    </select>
+  </div>
+
+  <div class="two-col">
+    <div class="form-row">
+      <label for="un-first">First Name <span id="first-src" class="badge badge-green" style="display:none; float:right;">Auto-filled</span></label>
+      <input id="un-first" type="text" placeholder="e.g. Ross" oninput="buildEmail()"/>
+    </div>
+    <div class="form-row">
+      <label for="un-last">Last Name <span id="last-src" class="badge badge-green" style="display:none; float:right;">Auto-filled</span></label>
+      <input id="un-last" type="text" placeholder="e.g. Adams" oninput="buildEmail()"/>
+    </div>
+  </div>
+
+  <div class="lookup-box" id="lookup-box">
+    <strong>Representative record not currently cached.</strong><br>
+    Please verify the current representative via the official Secretariat registry:<br>
+    <a href="https://www.icao.int/council-state-representatives" target="_blank">icao.int/council-state-representatives</a> 
+    and enter the name manually above.
+  </div>
+
+  <div class="form-row">
+    <label for="un-subject">Email Subject Header (Optional)</label>
+    <input id="un-subject" type="text" placeholder="e.g. Working Paper Submission - 42nd Assembly" oninput="buildEmail()"/>
+  </div>
+
+  <div class="result-box" id="un-result">
+    <div class="result-label">Primary Routing Address</div>
+    <div class="result-email" id="primary-email">—</div>
+
+    <div class="result-label" style="margin-top:16px">Secondary Routing Formats</div>
+    <div class="result-alts" id="alt-emails">—</div>
+
+    <div class="result-meta" id="un-meta"></div>
+
+    <div class="warn-box" id="warn-box">
+      <strong>Notice:</strong> Name entered manually. Address verification recommended.
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="copyText('primary-email','un-toast')">Copy Address</button>
+      <button class="btn btn-teal"    onclick="openMailto()">Open Client</button>
+      <button class="btn btn-outline" onclick="resetForm()">Reset</button>
+    </div>
+    <div class="toast" id="un-toast">Address Copied to Clipboard</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Routing Format Registry</h2>
+  <div class="info-box">
+    Select a Member State to review established syntax patterns for Civil Aviation Authorities (CAA) and Ministries of Foreign Affairs (MFA).
+  </div>
+  <div class="form-row" style="max-width:400px">
+    <label for="fmt-country">Member State Syntax Lookup</label>
+    <select id="fmt-country" onchange="showFormats()">
+      <option value="">-- Select Member State --</option>
+    </select>
+  </div>
+  <div id="fmt-results" style="display:none">
+    <h3 id="fmt-country-name"></h3>
+    <div id="fmt-list"></div>
+  </div>
+</div>
+</div><!-- /un-gen -->
+
+
+<!-- ════ PANE 2: ICAO INTERNAL ════ -->
+<div id="icao-gen" class="pane">
+<div class="card">
+  <h2>Secretariat & Internal Email Generator</h2>
+  <span class="badge badge-blue">Format: department@icao.int | office@[region].icao.int</span>
+
+  <div class="info-box">
+    Select the organizational branch to generate the official internal routing address.
+  </div>
+
+  <div class="icao-sec">
+    <div class="form-row">
+      <label for="icao-type">Organizational Branch</label>
+      <select id="icao-type" onchange="icaoSecondary()">
+        <option value="">-- Select Branch --</option>
+        <option value="hq">Headquarters (General)</option>
+        <option value="regional">Regional Offices</option>
+        <option value="department">Bureaus & Departments</option>
+        <option value="leadership">Executive Leadership</option>
+      </select>
+    </div>
+    <div id="icao-sec2"></div>
+  </div>
+
+  <div class="result-box" id="icao-result">
+    <div class="result-label">Official ICAO Address</div>
+    <div class="result-email" id="icao-email-disp">—</div>
+    <div class="result-meta"  id="icao-meta"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="copyText('icao-email-disp','icao-toast')">Copy Address</button>
+      <button class="btn btn-teal"    onclick="icaoMailto()">Open Client</button>
+      <button class="btn btn-outline" onclick="resetIcao()">Reset</button>
+    </div>
+    <div class="toast" id="icao-toast">Address Copied to Clipboard</div>
+  </div>
+</div>
+</div><!-- /icao-gen -->
+
+
+<!-- ════ PANE 3: DIRECTORY ════ -->
+<div id="directory" class="pane">
+
+<div class="card">
+  <h2>Headquarters (Montreal)</h2>
+  <div class="dir-grid">
+    <div class="dir-card"><h4>Location & Main Switchboard</h4>
+      <p>999 Robert-Bourassa Boulevard<br>Montréal, Québec H3C 5H7, Canada</p>
+      <p>Tel: +1 514-954-8219</p>
+      <p>Email: <a href="mailto:icaohq@icao.int">icaohq@icao.int</a></p>
+    </div>
+    <div class="dir-card"><h4>Digital Properties</h4>
+      <p>Portal: <a href="https://www.icao.int" target="_blank">icao.int</a></p>
+      <p>TV: <a href="https://www.icao.tv" target="_blank">icao.tv</a></p>
+      <p>News: <a href="https://www.unitingaviation.com" target="_blank">unitingaviation.com</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Regional Office Network</h2>
+  <div class="office-tiles">
+    <div class="office-tile">
+      <strong>Asia & Pacific (APAC)</strong>
+      <span>Bangkok, Thailand</span>
+      <span>Tel: +66 2 537 8189</span>
+      <span><a href="mailto:apac@icao.int">apac@icao.int</a></span>
+    </div>
+    <div class="office-tile">
+      <strong>APAC Sub-Office</strong>
+      <span>Beijing, China</span>
+      <span>Tel: +86-10-64557169</span>
+      <span><a href="mailto:apac-rso@icao.int">apac-rso@icao.int</a></span>
+    </div>
+    <div class="office-tile">
+      <strong>North America / Caribbean (NACC)</strong>
+      <span>Mexico City, Mexico</span>
+      <span>Tel: +52 55 52 50 32 11</span>
+      <span><a href="mailto:icaonacc@icao.int">icaonacc@icao.int</a></span>
+    </div>
+    <div class="office-tile">
+      <strong>South America (SAM)</strong>
+      <span>Lima, Peru</span>
+      <span>Tel: +51 1 611 8686</span>
+      <span><a href="mailto:icaosam@icao.int">icaosam@icao.int</a></span>
+    </div>
+    <div class="office-tile">
+      <strong>Eastern & Southern Africa (ESAF)</strong>
+      <span>Nairobi, Kenya</span>
+      <span>Tel: +254 20 7622 395</span>
+      <span><a href="mailto:icaoesaf@icao.int">icaoesaf@icao.int</a></span>
+    </div>
+    <div class="office-tile">
+      <strong>Western & Central Africa (WACAF)</strong>
+      <span>Dakar, Senegal</span>
+      <span>Tel: +221 33 869 24 24</span>
+      <span><a href="mailto:icaowacaf@dakar.icao.int">icaowacaf@dakar.icao.int</a></span>
+    </div>
+    <div class="office-tile">
+      <strong>Europe & North Atlantic (EUR/NAT)</strong>
+      <span>Paris, France</span>
+      <span>Tel: +33 1 46 41 85 85</span>
+      <span><a href="mailto:icaoeurnat@icao.int">icaoeurnat@icao.int</a></span>
+    </div>
+    <div class="office-tile">
+      <strong>Middle East (MID)</strong>
+      <span>Cairo, Egypt</span>
+      <span>Tel: +20 2 2267 4840</span>
+      <span><a href="mailto:icaomid@icao.int">icaomid@icao.int</a></span>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>System Export</h2>
+  <div class="info-box">
+    Download the structural JSON database for integration with external analysis tools or CRM platforms.
+  </div>
+  <button class="btn btn-primary" onclick="downloadContactsJSON()">Export Database JSON</button>
+</div>
+</div><!-- /directory -->
+
+
+<!-- ════ PANE 4: GUIDE ════ -->
+<div id="guide" class="pane">
+<div class="card">
+  <h2>Communication Protocols</h2>
+  <h3>Email Standards</h3>
+  <ul class="step-list">
+    <li><div class="step-body"><strong>Format Selection</strong><br>Utilize <code>firstname.lastname@[country]un.int</code> for Mission delegates. Use <code>department@icao.int</code> for Secretariat.</div></li>
+    <li><div class="step-body"><strong>Subject Line Syntax</strong><br>Include reference IDs, meeting numbers, or specific working paper titles (e.g., "A42-WP/103 - Query regarding Annex 17").</div></li>
+    <li><div class="step-body"><strong>Language Requirements</strong><br>English is the primary operational language. Formal documentation may require French, Spanish, Russian, Arabic, or Chinese.</div></li>
+    <li><div class="step-body"><strong>Response Timelines</strong><br>Standard processing: 5-7 business days. Technical queries: 2-3 weeks.</div></li>
+  </ul>
+  
+  <hr class="section-hr"/>
+  
+  <h3>Escalation & Alternative Routing</h3>
+  <div class="dir-grid">
+    <div class="dir-card"><h4>1. Primary: Permanent Mission</h4><p>The standard <code>un.int</code> address generated by this tool.</p></div>
+    <div class="dir-card"><h4>2. Verification: Registry</h4><p>Check the Council Representatives portal on icao.int for turnover updates.</p></div>
+    <div class="dir-card"><h4>3. Secondary: CAA</h4><p>National Civil Aviation Authorities process technical liaison directly.</p></div>
+    <div class="dir-card"><h4>4. Tertiary: MFA</h4><p>Ministries of Foreign Affairs manage overarching treaty/aviation desk routing.</p></div>
+  </div>
+  
+  <hr class="section-hr"/>
+  <div class="info-box" style="margin-bottom:0">
+    <strong>Operational Hours:</strong> Headquarters operates Mon–Fri, 0800–1700 Eastern Time. Subject to Canadian statutory holidays.
+  </div>
+</div>
+</div><!-- /guide -->
+
+</div><!-- /wrap -->
+
+<footer>
+  <p><strong>ICAO Contact Directory System</strong> <br> Independent interface utilizing data established in 2026. Verify sensitive routing at icao.int.</p>
+</footer>
+
+<script>
+/* ─── Global State ─── */
+let STATES = [];
+let ICAO_C = {};
+let currentCountry = null;
+let manualEntry = false;
+let acFocusIdx = -1;
+let icaoEmail = '';
+
+/* ─── Utility: Email Sanitization ─── */
+function sanitizeForEmail(str) {
+  if (!str) return '';
+  return str
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")                   
+    .replace(/[\u0300-\u036f]/g, "")    
+    .replace(/[^a-z0-9]/g, "");         
+}
+
+function parseAlternateNames(note) {
+  if (!note) return [];
+  const matches = [];
+  const regex = /alternate(?:s)?[:\s]+([^.;]+)/ig;
+  let match;
+  while ((match = regex.exec(note))) {
+    const names = match[1].split(/[,;&]/).map(name => name.trim().replace(/^(?:and|or)\s+/i, '')).filter(Boolean);
+    for (const name of names) {
+      if (!/verify|note|chief|representative|alternate/i.test(name)) {
+        matches.push(name);
+      } else if (/^[A-Z][a-z]+\s+[A-Z][a-z]+/.test(name)) {
+        matches.push(name);
+      }
+    }
+  }
+  return matches;
+}
+
+/* ─── Database Initialization ─── */
+async function init() {
+  try {
+    const response = await fetch('./icao-contacts-database.json');
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    
+    const data = await response.json();
+    STATES = data.member_states;
+    ICAO_C = data.icao_offices;
+
+    ['un-country', 'fmt-country'].forEach(id => {
+      const s = document.getElementById(id);
+      STATES.forEach(st => {
+        const o = document.createElement('option');
+        o.value = st.slug; 
+        o.textContent = st.name + (st.council ? ' (Council Member)' : '');
+        s.appendChild(o);
+        
+        if (st.rep && st.rep.note) {
+          st.rep.alternates = parseAlternateNames(st.rep.note);
+        }
+      });
+    });
+  } catch (error) {
+    console.error("Database load failed:", error);
+    document.querySelector('.tab-bar').insertAdjacentHTML('afterend', 
+      `<div class="warn-box show" style="max-width:1200px; margin:0 auto 24px;">⚠️ Error loading database. Please ensure <strong>icao-contacts-database.json</strong> is in the same directory.</div>`
+    );
+  }
+}
+
+/* ─── Country → Auto-fill Name ─── */
+function countrySelected() {
+  const slug = document.getElementById('un-country').value;
+  if (!slug) { currentCountry = null; resetForm(); return; }
+  
+  currentCountry = STATES.find(s => s.slug === slug);
+  manualEntry = false;
+
+  const lookup = document.getElementById('lookup-box');
+  const warn = document.getElementById('warn-box');
+
+  if (currentCountry.rep) {
+    const r = currentCountry.rep;
+    setName(r.first, r.last, true);
+    lookup.classList.remove('show');
+    warn.classList.remove('show');
+    if (r.note) {
+      warn.innerHTML = `<strong>Registry Note:</strong> ${r.note}`;
+      warn.classList.add('show');
+    }
+  } else {
+    setName('', '', false);
+    lookup.classList.add('show');
+    warn.classList.remove('show');
+  }
+  buildEmail();
+}
+
+function setName(first, last, autofilled) {
+  document.getElementById('un-first').value = first;
+  document.getElementById('un-last').value = last;
+  const show = autofilled ? 'inline-block' : 'none';
+  document.getElementById('first-src').style.display = show;
+  document.getElementById('last-src').style.display = show;
+}
+
+/* ─── Name Autocomplete ─── */
+function nameSearch(val) {
+  const dd = document.getElementById('ac-dropdown');
+  if (!val || val.length < 2) { dd.classList.remove('open'); return; }
+  
+  const q = val.toLowerCase();
+  const matches = STATES.filter(s => {
+    if (!s.rep) return false;
+    const full = (s.rep.first + ' ' + s.rep.last).toLowerCase();
+    const alternateMatches = (s.rep.alternates || []).some(a => a.toLowerCase().includes(q));
+    return full.includes(q) || s.rep.first.toLowerCase().includes(q) || s.rep.last.toLowerCase().includes(q) || alternateMatches;
+  });
+  
+  if (!matches.length) { dd.classList.remove('open'); return; }
+  
+  dd.innerHTML = matches.map((s, i) => {
+    const altLabel = s.rep.alternates && s.rep.alternates.length 
+      ? `<span class="badge badge-gray">Alt: ${s.rep.alternates.slice(0,2).join(', ')}</span>` : '';
+    return `<div class="ac-item" data-slug="${s.slug}" data-idx="${i}" 
+      onclick="selectAcItem('${s.slug}')" 
+      onmouseenter="acFocusIdx=${i};renderAc()">
+      <div class="ac-country">${s.rep.first} ${s.rep.last} 
+        ${s.council ? '<span class="badge badge-green">Council</span>' : ''} 
+        ${altLabel}
+      </div>
+      <div class="ac-title">${s.name} | ${s.slug}un.int</div>
+    </div>`;
+  }).join('');
+  
+  dd.classList.add('open');
+  acFocusIdx = -1;
+}
+
+function renderAc() {
+  document.querySelectorAll('.ac-item').forEach((el, i) => {
+    el.classList.toggle('focused', i === acFocusIdx);
+  });
+}
+
+function acKeydown(e) {
+  const dd = document.getElementById('ac-dropdown');
+  const items = dd.querySelectorAll('.ac-item');
+  if (!items.length) return;
+  
+  if (e.key === 'ArrowDown') { acFocusIdx = Math.min(acFocusIdx + 1, items.length - 1); e.preventDefault(); }
+  else if (e.key === 'ArrowUp') { acFocusIdx = Math.max(acFocusIdx - 1, 0); e.preventDefault(); }
+  else if (e.key === 'Enter' && acFocusIdx >= 0) { items[acFocusIdx].click(); e.preventDefault(); return; }
+  else if (e.key === 'Escape') { dd.classList.remove('open'); return; }
+  renderAc();
+}
+
+function selectAcItem(slug) {
+  currentCountry = STATES.find(x => x.slug === slug);
+  manualEntry = false;
+  document.getElementById('un-country').value = slug;
+  document.getElementById('name-search').value = '';
+  document.getElementById('ac-dropdown').classList.remove('open');
+  
+  setName(currentCountry.rep.first, currentCountry.rep.last, true);
+  document.getElementById('lookup-box').classList.remove('show');
+  
+  const warn = document.getElementById('warn-box');
+  if (currentCountry.rep.note) {
+    warn.innerHTML = `<strong>Registry Note:</strong> ${currentCountry.rep.note}`;
+    warn.classList.add('show');
+  } else {
+    warn.classList.remove('show');
+  }
+  buildEmail();
+}
+
+/* ─── Build UN Mission Email ─── */
+function buildEmail() {
+  const firstInput = document.getElementById('un-first').value;
+  const lastInput = document.getElementById('un-last').value;
+  
+  const first = sanitizeForEmail(firstInput);
+  const last = sanitizeForEmail(lastInput);
+  
+  const country = currentCountry;
+  const subj = document.getElementById('un-subject').value.trim();
+  const box = document.getElementById('un-result');
+
+  if (!first || !last || !country) { box.classList.remove('show'); return; }
+
+  const primary = `${first}.${last}@${country.slug}un.int`;
+
+  document.getElementById('primary-email').textContent = primary;
+  document.getElementById('alt-emails').innerHTML = `
+    <div class="alt-row">
+       <span class="alt-label">CAA Routing</span>
+       <span class="alt-addr">${first}.${last}@${country.caa}</span>
+    </div>
+    <div class="alt-row">
+       <span class="alt-label">MFA Routing</span>
+       <span class="alt-addr">${first}.${last}@${country.mfa}</span>
+    </div>`;
+
+  let delegationHtml = '';
+  if (country.delegation_group) {
+    delegationHtml = `
+      <div style="background:#EBF3FA; border-left:3px solid #005BBB; padding:10px 14px; margin:12px 0; border-radius:2px;">
+        <strong style="color:#002D62; text-transform:uppercase; font-size:0.8rem;">🌍 ${country.delegation_group.name} Member</strong><br>
+        <span style="font-size:0.85rem; color:#546E7A;">
+          On the ICAO Council, this state is currently represented by <strong>${country.delegation_group.represented_by}</strong> 
+          (${country.delegation_group.council_rep}).
+        </span>
+      </div>
+    `;
+  }
+
+  const isManual = !currentCountry.rep || (
+    firstInput.trim().toLowerCase() !== currentCountry.rep.first.toLowerCase() ||
+    lastInput.trim().toLowerCase() !== currentCountry.rep.last.toLowerCase()
+  );
+
+  document.getElementById('un-meta').innerHTML = `
+    <strong>Member State:</strong> ${country.name} 
+    ${country.council ? '&nbsp;<span class="badge badge-green">Council Member</span>' : ''}<br>
+    <strong>Mission Domain:</strong> @${country.slug}un.int<br>
+    <strong>Header Subject:</strong> ${subj || 'Not Specified'}
+    ${delegationHtml}
+  `;
+
+  const w = document.getElementById('warn-box');
+  if (isManual && !w.innerHTML.includes('Note:')) {
+    w.innerHTML = '<strong>Notice:</strong> Name entered manually. Address verification recommended via <a href="https://www.icao.int/council-state-representatives" target="_blank" style="color:inherit; text-decoration:underline;">registry</a>.';
+    w.classList.add('show');
+  }
+
+  box.classList.add('show');
+  window._currentPrimary = primary;
+  window._currentSubject = subj;
+}
+
+/* ─── Format Reference ─── */
+function showFormats() {
+  const slug = document.getElementById('fmt-country').value;
+  if (!slug) return;
+  const s = STATES.find(x => x.slug === slug);
+  document.getElementById('fmt-country-name').textContent = s.name + ' — Routing Syntax';
+  
+  const known = s.rep
+    ? `<p><strong>Cached Rep:</strong> ${s.rep.first} ${s.rep.last}${s.rep.note ? ' <em>(' + s.rep.note + ')</em>' : ''}</p>`
+    : `<p style="color:var(--text-muted);font-size:.85rem;">Record unavailable. <br>
+       Verify at: <a href="https://www.icao.int/council-state-representatives" target="_blank">Registry</a></p>`;
+       
+  document.getElementById('fmt-list').innerHTML = `
+    <div class="fmt-grid">
+      <div class="fmt-card">
+        <h4>Mission Routing</h4>
+        <code>firstname.lastname@${slug}un.int</code>
+        ${known}
+      </div>
+      <div class="fmt-card">
+        <h4>CAA Routing</h4>
+        <code>firstname.lastname@${s.caa}</code>
+        <p>Civil Aviation Authority domain mapping.</p>
+      </div>
+      <div class="fmt-card">
+        <h4>MFA Routing</h4>
+        <code>firstname.lastname@${s.mfa}</code>
+        <p>Ministry of Foreign Affairs domain mapping.</p>
+      </div>
+    </div>`;
+  document.getElementById('fmt-results').style.display = 'block';
+}
+
+/* ─── ICAO Internal Generator ─── */
+function icaoSecondary() {
+  const type = document.getElementById('icao-type').value;
+  const sec = document.getElementById('icao-sec2');
+  sec.innerHTML = '';
+  document.getElementById('icao-result').classList.remove('show');
+  
+  if (type === 'hq') { buildIcaoEmail(); return; }
+  
+  const src = { regional: ICAO_C.regional, department: ICAO_C.department, leadership: ICAO_C.leadership };
+  if (!src[type]) return;
+  
+  let html = `
+    <div class="form-row">
+      <label>Select ${type.charAt(0).toUpperCase() + type.slice(1)}</label>
+      <select id="icao-dynamic-select" onchange="buildIcaoEmail()">
+        <option value="">-- Select --</option>`;
+  
+  for (const k in src[type]) { html += `<option value="${k}">${k}</option>`; }
+  html += `</select></div>`;
+  sec.innerHTML = html;
+}
+
+function buildIcaoEmail() {
+  const type = document.getElementById('icao-type').value;
+  if (!type) return;
+  
+  let c = null, label = '';
+  
+  if (type === 'hq') {
+    c = ICAO_C.hq; 
+    label = 'Headquarters';
+  } else {
+    const src = { regional: ICAO_C.regional, department: ICAO_C.department, leadership: ICAO_C.leadership };
+    const sel = document.getElementById('icao-dynamic-select');
+    if (!sel || !sel.value) return;
+    c = src[type][sel.value];
+    label = sel.value;
+  }
+  
+  if (!c) return;
+  
+  icaoEmail = c.email;
+  document.getElementById('icao-email-disp').textContent = c.email;
+  
+  let m = `<strong>Target:</strong> ${label}<br>`;
+  if (c.phone) m += `<strong>Switchboard:</strong> ${c.phone}<br>`;
+  if (c.addr) m += `<strong>Location:</strong> ${c.addr}<br>`;
+  if (c.note) m += `<strong>Directive:</strong> ${c.note}`;
+  
+  document.getElementById('icao-meta').innerHTML = m;
+  document.getElementById('icao-result').classList.add('show');
+}
+
+/* ─── UI Utilities ─── */
+function copyText(elId, toastId) {
+  const val = document.getElementById(elId).textContent.trim();
+  if (!val || val === '—') return;
+  navigator.clipboard.writeText(val).then(() => {
+    const t = document.getElementById(toastId);
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2800);
+  });
+}
+
+function openMailto() {
+  const email = window._currentPrimary;
+  if (!email) return;
+  const subj = window._currentSubject || '';
+  window.location.href = subj ? `mailto:${email}?subject=${encodeURIComponent(subj)}` : `mailto:${email}`;
+}
+
+function icaoMailto() {
+  if (icaoEmail) window.location.href = `mailto:${icaoEmail}`;
+}
+
+function resetForm() {
+  ['un-first', 'un-last', 'un-country', 'un-subject', 'name-search'].forEach(id => {
+    const e = document.getElementById(id); if (e) e.value = '';
+  });
+  document.getElementById('un-result').classList.remove('show');
+  document.getElementById('lookup-box').classList.remove('show');
+  document.getElementById('warn-box').classList.remove('show');
+  document.getElementById('ac-dropdown').classList.remove('open');
+  document.getElementById('first-src').style.display = 'none';
+  document.getElementById('last-src').style.display = 'none';
+  currentCountry = null; 
+  manualEntry = false; 
+  window._currentPrimary = '';
+}
+
+function resetIcao() {
+  document.getElementById('icao-type').value = '';
+  document.getElementById('icao-sec2').innerHTML = '';
+  document.getElementById('icao-result').classList.remove('show');
+  icaoEmail = '';
+}
+
+function showTab(id, btn) {
+  document.querySelectorAll('.pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  if (id !== 'un-gen') document.getElementById('ac-dropdown').classList.remove('open');
+}
+
+function downloadContactsJSON() {
+  if (!STATES.length) return; 
+  const database = {
+    metadata: { title: "ICAO Contact Directory Export" },
+    member_states: STATES,
+    icao_offices: ICAO_C
+  };
+  const jsonString = JSON.stringify(database, null, 2);
+  const blob = new Blob([jsonString], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'icao-contacts-export.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.ac-wrap')) document.getElementById('ac-dropdown').classList.remove('open');
+});
+
+init();
+</script>
+</body>
+</html>

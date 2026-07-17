@@ -1,0 +1,625 @@
+{
+  "metadata": {
+    "title": "ICAO Contact Directory Database",
+    "version": "2.0",
+    "date_exported": "2026-07-16",
+    "source": "ICAO_Interactive_Email_Generator_Final",
+    "total_member_states": 194,
+    "description": "Complete contact database for ICAO member states and internal offices, reflecting 2026 Assembly updates."
+  },
+  "member_states": [
+    {"name": "Afghanistan", "slug": "afghanistan", "caa": "acaa.gov.af", "mfa": "mfa.gov.af", "rep": null},
+    {"name": "Albania", "slug": "albania", "caa": "caa.gov.al", "mfa": "punetejashtme.gov.al", "rep": null},
+    {"name": "Algeria", "slug": "algeria", "caa": "dgacm.gov.dz", "mfa": "mae.gov.dz", "rep": null},
+    {"name": "Andorra", "slug": "andorra", "caa": "govern.ad", "mfa": "govern.ad", "rep": null},
+    {
+      "name": "Angola",
+      "slug": "angola",
+      "caa": "inavic.gv.ao",
+      "mfa": "mirex.gov.ao",
+      "rep": {"first": "Illasandra", "last": "da Silva", "note": "Permanent Representative of Angola to ICAO — October 2025-present"},
+      "council": true
+    },
+    {"name": "Antigua and Barbuda", "slug": "antigua-barbuda", "caa": "abcaa.com", "mfa": "foreign.gov.ag", "rep": null},
+    {
+      "name": "Argentina",
+      "slug": "argentina",
+      "caa": "anac.gov.ar",
+      "mfa": "mrecic.gov.ar",
+      "rep": {"first": "Gerardo", "last": "Bompadre", "note": "Permanent Representative to ICAO — 42nd Assembly, Oct 2025. Alternate: Carlos Fernández"},
+      "council": true
+    },
+    {"name": "Armenia", "slug": "armenia", "caa": "gcaa.am", "mfa": "mfa.am", "rep": null},
+    {
+      "name": "Australia",
+      "slug": "australia",
+      "caa": "casa.gov.au",
+      "mfa": "dfat.gov.au",
+      "rep": {"first": "Sarah", "last": "Millard", "note": "Permanent Representative of Australia to ICAO — confirmed January 2026"},
+      "council": true
+    },
+    {
+      "name": "Austria",
+      "slug": "austria",
+      "caa": "austro-control.at",
+      "mfa": "bmeia.gv.at",
+      "rep": {"first": "Lothar", "last": "Anzenberger", "note": "ICAO Liaison Officer"},
+      "delegation_group": {"name": "ABIS Group", "represented_by": "Switzerland", "council_rep": "Helena Hallauer-Hess"}
+    },
+    {"name": "Azerbaijan", "slug": "azerbaijan", "caa": "gcaa.gov.az", "mfa": "mfa.gov.az", "rep": null},
+    {"name": "Bahamas", "slug": "bahamas", "caa": "caabahamas.com", "mfa": "bahamas.gov.bs", "rep": null},
+    {"name": "Bahrain", "slug": "bahrain", "caa": "caa.gov.bh", "mfa": "mofa.gov.bh", "rep": null},
+    {"name": "Bangladesh", "slug": "bangladesh", "caa": "caab.gov.bd", "mfa": "mofa.gov.bd", "rep": null},
+    {"name": "Barbados", "slug": "barbados", "caa": "tcabarbados.gov.bb", "mfa": "foreign.gov.bb", "rep": null},
+    {"name": "Belarus", "slug": "belarus", "caa": "mintrans.gov.by", "mfa": "mfa.gov.by", "rep": null},
+    {
+      "name": "Belgium",
+      "slug": "belgium",
+      "caa": "mobilit.belgium.be",
+      "mfa": "diplomatie.belgium.be",
+      "rep": {"first": "An", "last": "De Lange", "note": "ICAO Liaison Officer"},
+      "delegation_group": {"name": "ABIS Group", "represented_by": "Switzerland", "council_rep": "Helena Hallauer-Hess"}
+    },
+    {
+      "name": "Belize",
+      "slug": "belize",
+      "caa": "belizenationalcaa.com",
+      "mfa": "mfa.gov.bz",
+      "rep": {"first": "Kennedy", "last": "Carrillo", "note": "Belize State Representative to ICAO — 42nd Assembly, Oct 2025"},
+      "council": true
+    },
+    {"name": "Benin", "slug": "benin", "caa": "anac-benin.com", "mfa": "mfa.bj", "rep": null},
+    {"name": "Bhutan", "slug": "bhutan", "caa": "dgca.gov.bt", "mfa": "mfa.gov.bt", "rep": null},
+    {
+      "name": "Bolivia",
+      "slug": "bolivia",
+      "caa": "dgac.gob.bo",
+      "mfa": "cancilleria.gob.bo",
+      "rep": {"first": "Javier Garcia", "last": "Soruco", "note": "Representative of Bolivia to ICAO"}
+    },
+    {"name": "Bosnia and Herzegovina", "slug": "bosniaherzegovina", "caa": "bhdca.gov.ba", "mfa": "mvp.gov.ba", "rep": null},
+    {"name": "Botswana", "slug": "botswana", "caa": "caab.co.bw", "mfa": "gov.bw", "rep": null},
+    {
+      "name": "Brazil",
+      "slug": "brazil",
+      "caa": "anac.gov.br",
+      "mfa": "itamaraty.gov.br",
+      "rep": {"first": "Michel", "last": "Arslanian Neto", "note": "Permanent Representative of Brazil to ICAO. Alternate: Rafael Faria"},
+      "council": true
+    },
+    {"name": "Brunei Darussalam", "slug": "brunei", "caa": "cabd.gov.bn", "mfa": "mfa.gov.bn", "rep": null},
+    {"name": "Bulgaria", "slug": "bulgaria", "caa": "caa.bg", "mfa": "mfa.bg", "rep": null},
+    {"name": "Burkina Faso", "slug": "burkinafaso", "caa": "anac.bf", "mfa": "mae.bf", "rep": null},
+    {"name": "Burundi", "slug": "burundi", "caa": "anacb.bi", "mfa": "mae.bi", "rep": null},
+    {"name": "Cabo Verde", "slug": "caboverde", "caa": "anac.cv", "mfa": "mne.gov.cv", "rep": null},
+    {"name": "Cambodia", "slug": "cambodia", "caa": "ssca.gov.kh", "mfa": "mfaic.gov.kh", "rep": null},
+    {"name": "Cameroon", "slug": "cameroon", "caa": "ccaa.cm", "mfa": "minrex.gov.cm", "rep": null},
+    {
+      "name": "Canada",
+      "slug": "canada",
+      "caa": "tc.gc.ca",
+      "mfa": "international.gc.ca",
+      "rep": {"first": "Anna-Karine", "last": "Asselin", "note": "Primary representative as of August 2025"},
+      "council": true
+    },
+    {"name": "Central African Republic", "slug": "centralafricanrepublic", "caa": "asecna.aero", "mfa": "maeacg.gov.cf", "rep": null},
+    {"name": "Chad", "slug": "chad", "caa": "anac.td", "mfa": "mae.td", "rep": null},
+    {"name": "Chile", "slug": "chile", "caa": "dgac.gob.cl", "mfa": "minrel.gob.cl", "rep": null},
+    {
+      "name": "China",
+      "slug": "china",
+      "caa": "caac.gov.cn",
+      "mfa": "fmprc.gov.cn",
+      "rep": {"first": "Xinming", "last": "Lyu", "note": "Permanent Representative to ICAO. Alternate reps: Liang Junrong, Yang Wei"},
+      "council": true
+    },
+    {
+      "name": "Colombia",
+      "slug": "colombia",
+      "caa": "aerocivil.gov.co",
+      "mfa": "cancilleria.gov.co",
+      "rep": {"first": "Mauricio", "last": "Ramirez Koppel", "note": "Permanent Representative of Colombia to ICAO — October 2025-present"},
+      "council": true
+    },
+    {"name": "Comoros", "slug": "comoros", "caa": "anacm.km", "mfa": "mae.com.km", "rep": null},
+    {"name": "Congo", "slug": "congo", "caa": "anac-congo.com", "mfa": "mae.cg", "rep": null},
+    {"name": "Cook Islands", "slug": "cookislands", "caa": "aviation.gov.ck", "mfa": "mfai.gov.ck", "rep": null},
+    {"name": "Costa Rica", "slug": "costarica", "caa": "dgac.go.cr", "mfa": "rree.go.cr", "rep": null},
+    {"name": "Cote d'Ivoire", "slug": "cotedivoire", "caa": "anac-ci.net", "mfa": "diplomatie.gouv.ci", "rep": null},
+    {
+      "name": "Croatia",
+      "slug": "croatia",
+      "caa": "ccaa.hr",
+      "mfa": "mvep.gov.hr",
+      "rep": {"first": "Dinko", "last": "Staničić", "note": "Directorate General of Civil Aviation"},
+      "delegation_group": {"name": "ABIS Group", "represented_by": "Switzerland", "council_rep": "Helena Hallauer-Hess"}
+    },
+    {
+      "name": "Cuba",
+      "slug": "cuba",
+      "caa": "iacc.cu",
+      "mfa": "minrex.cu",
+      "rep": {"first": "Mercedes", "last": "Vázquez", "note": "Permanent Representative of Cuba to ICAO — October 2025-present"},
+      "council": true
+    },
+    {"name": "Cyprus", "slug": "cyprus", "caa": "mcit.gov.cy", "mfa": "mfa.gov.cy", "rep": null},
+    {"name": "Czechia", "slug": "czech", "caa": "caa.cz", "mfa": "mzv.cz", "rep": null},
+    {"name": "Dem. People's Rep. of Korea", "slug": "dprkorea", "caa": "aviation.kp", "mfa": "mfa.gov.kp", "rep": null},
+    {"name": "Democratic Republic of the Congo", "slug": "drcongo", "caa": "rva.cd", "mfa": "mae.cd", "rep": null},
+    {
+      "name": "Denmark",
+      "slug": "denmark",
+      "caa": "tbst.dk",
+      "mfa": "um.dk",
+      "rep": {"first": "Henrik", "last": "Ellermann", "note": "October 2025-present"},
+      "council": true
+    },
+    {"name": "Djibouti", "slug": "djibouti", "caa": "anac.dj", "mfa": "affairesEtrangeres.dj", "rep": null},
+    {"name": "Dominica", "slug": "dominica", "caa": "aviation.gov.dm", "mfa": "foreign.gov.dm", "rep": null},
+    {"name": "Dominican Republic", "slug": "dominicanrepublic", "caa": "idac.gov.do", "mfa": "mirex.gob.do", "rep": null},
+    {
+      "name": "Ecuador",
+      "slug": "ecuador",
+      "caa": "aviacioncivil.gob.ec",
+      "mfa": "cancilleria.gob.ec",
+      "rep": {"first": "Chester David", "last": "Salazar del Pozo", "note": "Permanent Representative of Ecuador to ICAO — November 2025-present"},
+      "council": true
+    },
+    {
+      "name": "Egypt",
+      "slug": "egypt",
+      "caa": "ecaa.gov.eg",
+      "mfa": "mfa.gov.eg",
+      "rep": {"first": "Dr. Sameh Ahmed", "last": "Zaky Elhefny", "note": "Chief delegate. Alternate: Reem Oraby"},
+      "council": true
+    },
+    {"name": "El Salvador", "slug": "elsalvador", "caa": "aacoes.gob.sv", "mfa": "rree.gob.sv", "rep": null},
+    {
+      "name": "Equatorial Guinea",
+      "slug": "equatorialguinea",
+      "caa": "minfira.com",
+      "mfa": "mfaeguinea.org",
+      "rep": {"first": "Estanislao Esono", "last": "Anguesomo", "note": "October 2019-present"},
+      "council": true
+    },
+    {"name": "Eritrea", "slug": "eritrea", "caa": "caae.gov.er", "mfa": "mofa.gov.er", "rep": null},
+    {"name": "Estonia", "slug": "estonia", "caa": "ecaa.ee", "mfa": "vm.ee", "rep": null},
+    {"name": "Eswatini", "slug": "eswatini", "caa": "caase.org.sz", "mfa": "foreign.gov.sz", "rep": null},
+    {"name": "Ethiopia", "slug": "ethiopia", "caa": "ecaa.gov.et", "mfa": "mfa.gov.et", "rep": null},
+    {"name": "Fiji", "slug": "fiji", "caa": "caaf.com.fj", "mfa": "foreignaffairs.gov.fj", "rep": null},
+    {"name": "Finland", "slug": "finland", "caa": "traficom.fi", "mfa": "formin.finland.fi", "rep": null},
+    {
+      "name": "France",
+      "slug": "france",
+      "caa": "dgac.aviation-civile.fr",
+      "mfa": "diplomatie.gouv.fr",
+      "rep": {"first": "Florence", "last": "Cormon-Veyssière", "note": "Ambassador / Chief Delegate of France"},
+      "council": true
+    },
+    {"name": "Gabon", "slug": "gabon", "caa": "anac-gabon.com", "mfa": "mae.gov.ga", "rep": null},
+    {"name": "Gambia", "slug": "gambia", "caa": "gcaa.gm", "mfa": "mfa.gov.gm", "rep": null},
+    {"name": "Georgia", "slug": "georgia", "caa": "gcaa.ge", "mfa": "mfa.gov.ge", "rep": null},
+    {
+      "name": "Germany",
+      "slug": "germany",
+      "caa": "lba.de",
+      "mfa": "auswaertiges-amt.de",
+      "rep": {"first": "Heinz", "last": "Decker", "note": "Permanent Representative of Germany on the ICAO Council"},
+      "council": true
+    },
+    {"name": "Ghana", "slug": "ghana", "caa": "gcaa.com.gh", "mfa": "mfa.gov.gh", "rep": null},
+    {"name": "Greece", "slug": "greece", "caa": "hcaa.gr", "mfa": "mfa.gr", "rep": null},
+    {"name": "Grenada", "slug": "grenada", "caa": "gcaaoecs.com", "mfa": "foreign.gov.gd", "rep": null},
+    {"name": "Guatemala", "slug": "guatemala", "caa": "dgac.gob.gt", "mfa": "minex.gob.gt", "rep": null},
+    {"name": "Guinea", "slug": "guinea", "caa": "dnac.gov.gn", "mfa": "mae.gov.gn", "rep": null},
+    {"name": "Guinea-Bissau", "slug": "guineabissau", "caa": "inac.gw", "mfa": "mfa.gw", "rep": null},
+    {"name": "Guyana", "slug": "guyana", "caa": "gcaa.gy", "mfa": "minfor.gov.gy", "rep": null},
+    {"name": "Haiti", "slug": "haiti", "caa": "officiel-aviation-civile.gouv.ht", "mfa": "maehaiti.gouv.ht", "rep": null},
+    {"name": "Honduras", "slug": "honduras", "caa": "ahac.hn", "mfa": "sre.hn", "rep": null},
+    {"name": "Hungary", "slug": "hungary", "caa": "nkh.gov.hu", "mfa": "mfa.gov.hu", "rep": null},
+    {"name": "Iceland", "slug": "iceland", "caa": "samgongustofa.is", "mfa": "mfa.is", "rep": null},
+    {
+      "name": "India",
+      "slug": "india",
+      "caa": "dgca.gov.in",
+      "mfa": "mea.gov.in",
+      "rep": {"first": "Angshumali", "last": "Rastogi", "note": "September 2023-present"},
+      "council": true
+    },
+    {
+      "name": "Indonesia",
+      "slug": "indonesia",
+      "caa": "dephub.go.id",
+      "mfa": "kemlu.go.id",
+      "rep": {"first": "Muhsin", "last": "Syihab", "note": "Permanent Representative/Ambassador of Indonesia to ICAO"},
+      "council": false
+    },
+    {"name": "Iran", "slug": "iran", "caa": "cao.ir", "mfa": "mfa.ir", "rep": null},
+    {"name": "Iraq", "slug": "iraq", "caa": "iacmoi.gov.iq", "mfa": "mofa.gov.iq", "rep": null},
+    {
+      "name": "Ireland",
+      "slug": "ireland",
+      "caa": "iaa.ie",
+      "mfa": "dfa.ie",
+      "rep": {"first": "Christopher", "last": "Murphy", "note": "Department of Transport Liaison"},
+      "delegation_group": {"name": "ABIS Group", "represented_by": "Switzerland", "council_rep": "Helena Hallauer-Hess"}
+    },
+    {"name": "Israel", "slug": "israel", "caa": "caa.gov.il", "mfa": "mfa.gov.il", "rep": null},
+    {
+      "name": "Italy",
+      "slug": "italy",
+      "caa": "enac.gov.it",
+      "mfa": "esteri.it",
+      "rep": {"first": "Sergio", "last": "Martes", "note": "June 2023-present"},
+      "council": true
+    },
+    {"name": "Jamaica", "slug": "jamaica", "caa": "jcaa.gov.jm", "mfa": "mfaft.gov.jm", "rep": null},
+    {
+      "name": "Japan",
+      "slug": "japan",
+      "caa": "mlit.go.jp",
+      "mfa": "mofa.go.jp",
+      "rep": {"first": "Toshiyuki", "last": "Onuma", "note": "Council President as of January 2026"},
+      "council": true
+    },
+    {"name": "Jordan", "slug": "jordan", "caa": "carc.gov.jo", "mfa": "mfa.gov.jo", "rep": null},
+    {"name": "Kazakhstan", "slug": "kazakhstan", "caa": "mcis.gov.kz", "mfa": "mfa.kz", "rep": null},
+    {"name": "Kenya", "slug": "kenya", "caa": "kcaa.or.ke", "mfa": "mfa.go.ke", "rep": null},
+    {"name": "Kiribati", "slug": "kiribati", "caa": "mcttd.gov.ki", "mfa": "mfa.gov.ki", "rep": null},
+    {"name": "Kuwait", "slug": "kuwait", "caa": "dgca.gov.kw", "mfa": "mofa.gov.kw", "rep": null},
+    {"name": "Kyrgyzstan", "slug": "kyrgyzstan", "caa": "gcaa.kg", "mfa": "mfa.gov.kg", "rep": null},
+    {"name": "Lao PDR", "slug": "lao", "caa": "mict.gov.la", "mfa": "mofa.gov.la", "rep": null},
+    {"name": "Latvia", "slug": "latvia", "caa": "caa.lv", "mfa": "mfa.gov.lv", "rep": null},
+    {"name": "Lebanon", "slug": "lebanon", "caa": "caa.gov.lb", "mfa": "foreign.gov.lb", "rep": null},
+    {"name": "Lesotho", "slug": "lesotho", "caa": "caals.org", "mfa": "foreign.gov.ls", "rep": null},
+    {"name": "Liberia", "slug": "liberia", "caa": "laac.com.lr", "mfa": "mofa.gov.lr", "rep": null},
+    {"name": "Libya", "slug": "libya", "caa": "lyncaa.gov.ly", "mfa": "mfa.gov.ly", "rep": null},
+    {"name": "Lithuania", "slug": "lithuania", "caa": "caa.lt", "mfa": "urm.lt", "rep": null},
+    {
+      "name": "Luxembourg",
+      "slug": "luxembourg",
+      "caa": "gouvernement.lu",
+      "mfa": "mae.lu",
+      "rep": {"first": "Loren", "last": "Florey", "note": "Directorate of Civil Aviation"},
+      "delegation_group": {"name": "ABIS Group", "represented_by": "Switzerland", "council_rep": "Helena Hallauer-Hess"}
+    },
+    {"name": "Madagascar", "slug": "madagascar", "caa": "acm.mg", "mfa": "maeajf.gov.mg", "rep": null},
+    {"name": "Malawi", "slug": "malawi", "caa": "macaa.mw", "mfa": "foreign.gov.mw", "rep": null},
+    {
+      "name": "Malaysia",
+      "slug": "malaysia",
+      "caa": "caam.gov.my",
+      "mfa": "kln.gov.my",
+      "rep": {"first": "Nurulhakeem", "last": "Bin Hasim", "note": "Permanent Representative of Malaysia on the ICAO Council"},
+      "council": true
+    },
+    {"name": "Maldives", "slug": "maldives", "caa": "caa.gov.mv", "mfa": "foreign.gov.mv", "rep": null},
+    {
+      "name": "Mali",
+      "slug": "mali",
+      "caa": "anac-mali.com",
+      "mfa": "mae-mali.org",
+      "rep": {"first": "Sidi Sadio", "last": "Diallo", "note": "October 2025-present"},
+      "council": true
+    },
+    {"name": "Malta", "slug": "malta", "caa": "transport.gov.mt", "mfa": "foreign.gov.mt", "rep": null},
+    {"name": "Marshall Islands", "slug": "marshallislands", "caa": "ampaa.net", "mfa": "mfa.gov.mh", "rep": null},
+    {"name": "Mauritania", "slug": "mauritania", "caa": "anac.mr", "mfa": "mae.gov.mr", "rep": null},
+    {"name": "Mauritius", "slug": "mauritius", "caa": "caa.govmu.org", "mfa": "foreign.govmu.org", "rep": null},
+    {
+      "name": "Mexico",
+      "slug": "mexico",
+      "caa": "afac.gob.mx",
+      "mfa": "sre.gob.mx",
+      "rep": {"first": "Dionisio", "last": "Méndez Mayora", "note": "Permanent Representative of Mexico to ICAO"},
+      "council": true
+    },
+    {"name": "Micronesia", "slug": "micronesia", "caa": "dot.fm", "mfa": "fsmgov.org", "rep": null},
+    {"name": "Moldova", "slug": "moldova", "caa": "caa.md", "mfa": "mfa.gov.md", "rep": null},
+    {"name": "Monaco", "slug": "monaco", "caa": "gouv.mc", "mfa": "gouv.mc", "rep": null},
+    {"name": "Mongolia", "slug": "mongolia", "caa": "mcaa.gov.mn", "mfa": "mfa.gov.mn", "rep": null},
+    {"name": "Montenegro", "slug": "montenegro", "caa": "caa.me", "mfa": "mfa.gov.me", "rep": null},
+    {
+      "name": "Morocco",
+      "slug": "morocco",
+      "caa": "mcinet.gov.ma",
+      "mfa": "maec.gov.ma",
+      "rep": {"first": "Souriya", "last": "Otmani", "note": "Newly Appointed June 2026-present"},
+      "council": true
+    },
+    {"name": "Mozambique", "slug": "mozambique", "caa": "aaacm.gov.mz", "mfa": "mzv.gov.mz", "rep": null},
+    {"name": "Myanmar", "slug": "myanmar", "caa": "dca.gov.mm", "mfa": "mofa.gov.mm", "rep": null},
+    {"name": "Namibia", "slug": "namibia", "caa": "caa.com.na", "mfa": "mfa.gov.na", "rep": null},
+    {"name": "Nauru", "slug": "nauru", "caa": "nauru.gov.nr", "mfa": "naurugov.nr", "rep": null},
+    {"name": "Nepal", "slug": "nepal", "caa": "caanepal.gov.np", "mfa": "mofa.gov.np", "rep": null},
+    {
+      "name": "Netherlands",
+      "slug": "netherlands",
+      "caa": "ilent.nl",
+      "mfa": "minbuza.nl",
+      "rep": {"first": "Richard", "last": "Ossendorp", "note": "Permanent Representative of the Netherlands to ICAO"}
+    },
+    {"name": "New Zealand", "slug": "newzealand", "caa": "caa.govt.nz", "mfa": "mfat.govt.nz", "rep": null},
+    {"name": "Nicaragua", "slug": "nicaragua", "caa": "eaai.gob.ni", "mfa": "cancilleria.gob.ni", "rep": null},
+    {"name": "Niger", "slug": "niger", "caa": "anac.ne", "mfa": "mfa.ne", "rep": null},
+    {
+      "name": "Nigeria",
+      "slug": "nigeria",
+      "caa": "ncaa.gov.ng",
+      "mfa": "mfa.gov.ng",
+      "rep": {"first": "Mahmoud", "last": "Ben Tukur", "note": "Representative of Nigeria on ICAO Council"},
+      "council": true
+    },
+    {"name": "North Macedonia", "slug": "northmacedonia", "caa": "caa.gov.mk", "mfa": "mfa.gov.mk", "rep": null},
+    {"name": "Norway", "slug": "norway", "caa": "luftfartstilsynet.no", "mfa": "regjeringen.no", "rep": null},
+    {"name": "Oman", "slug": "oman", "caa": "caa.gov.om", "mfa": "mofa.gov.om", "rep": null},
+    {"name": "Pakistan", "slug": "pakistan", "caa": "caapakistan.com", "mfa": "mofa.gov.pk", "rep": null},
+    {"name": "Palau", "slug": "palau", "caa": "palauobta.com", "mfa": "palaugov.pw", "rep": null},
+    {"name": "Palestine", "slug": "palestine", "caa": "paa.ps", "mfa": "mofa.ps", "rep": null},
+    {"name": "Panama", "slug": "panama", "caa": "autoridaddaviacioncivil.gob.pa", "mfa": "mire.gob.pa", "rep": null},
+    {"name": "Papua New Guinea", "slug": "papuanewguinea", "caa": "caapng.com.pg", "mfa": "foreign.gov.pg", "rep": null},
+    {"name": "Paraguay", "slug": "paraguay", "caa": "dinac.gov.py", "mfa": "mre.gov.py", "rep": null},
+    {"name": "Peru", "slug": "peru", "caa": "dgac.gob.pe", "mfa": "rree.gob.pe", "rep": null},
+    {"name": "Philippines", "slug": "philippines", "caa": "caap.gov.ph", "mfa": "dfa.gov.ph", "rep": null},
+    {
+      "name": "Poland",
+      "slug": "poland",
+      "caa": "ulc.gov.pl",
+      "mfa": "msz.gov.pl",
+      "rep": {"first": "Izabela", "last": "Fabjanska-Potapczuk", "note": "Consul General / Representative of Poland to ICAO"},
+      "council": true
+    },
+    {
+      "name": "Portugal",
+      "slug": "portugal",
+      "caa": "anac.pt",
+      "mfa": "mne.gov.pt",
+      "rep": {"first": "Fernanda", "last": "Bandarra", "note": "Institute of Civil Aviation Authority"}
+    },
+    {
+      "name": "Qatar",
+      "slug": "qatar",
+      "caa": "caa.gov.qa",
+      "mfa": "mofa.gov.qa",
+      "rep": {"first": "Essa", "last": "Al-Malki", "note": "Permanent Representative of Qatar to ICAO"},
+      "council": true
+    },
+    {
+      "name": "Republic of Korea",
+      "slug": "republicofkorea",
+      "caa": "molit.go.kr",
+      "mfa": "mofa.go.kr",
+      "rep": {"first": "Jae-Wan", "last": "Lee", "note": "Ambassador/Representative of the Republic of Korea to ICAO"},
+      "council": true
+    },
+    {"name": "Romania", "slug": "romania", "caa": "caa.ro", "mfa": "mae.ro", "rep": null},
+    {
+      "name": "Russian Federation",
+      "slug": "russia",
+      "caa": "favt.ru",
+      "mfa": "mid.ru",
+      "rep": {"first": "Alexander", "last": "Batalov", "note": "Representative of the Russian Federation to ICAO"}
+    },
+    {"name": "Rwanda", "slug": "rwanda", "caa": "rca.gov.rw", "mfa": "minaffet.gov.rw", "rep": null},
+    {"name": "Saint Kitts and Nevis", "slug": "saintkittsnevis", "caa": "skncivilaviation.com", "mfa": "foreign.gov.kn", "rep": null},
+    {"name": "Saint Lucia", "slug": "saintlucia", "caa": "slaspa.com", "mfa": "foreign.gov.lc", "rep": null},
+    {"name": "Saint Vincent and the Grenadines", "slug": "saintvincentgrenadines", "caa": "svgcaa.gov.vc", "mfa": "foreign.gov.vc", "rep": null},
+    {"name": "Samoa", "slug": "samoa", "caa": "mnre.gov.ws", "mfa": "mfa.gov.ws", "rep": null},
+    {"name": "San Marino", "slug": "sanmarino", "caa": "consiglio.sm", "mfa": "esteri.sm", "rep": null},
+    {"name": "Sao Tome and Principe", "slug": "saotomeprincipe", "caa": "aaastp.st", "mfa": "mne.st", "rep": null},
+    {
+      "name": "Saudi Arabia",
+      "slug": "saudiarabia",
+      "caa": "gaca.gov.sa",
+      "mfa": "mofa.gov.sa",
+      "rep": {"first": "Mohammed Sami S", "last": "Habib", "note": "February 2025-present"},
+      "council": true
+    },
+    {"name": "Senegal", "slug": "senegal", "caa": "anacs.sn", "mfa": "diplomatie.gouv.sn", "rep": null},
+    {"name": "Serbia", "slug": "serbia", "caa": "caa.rs", "mfa": "mfa.gov.rs", "rep": null},
+    {"name": "Seychelles", "slug": "seychelles", "caa": "cassey.com", "mfa": "mfa.gov.sc", "rep": null},
+    {"name": "Sierra Leone", "slug": "sierraleone", "caa": "slcaa.sl", "mfa": "mofa.gov.sl", "rep": null},
+    {
+      "name": "Singapore",
+      "slug": "singapore",
+      "caa": "caas.gov.sg",
+      "mfa": "mfa.gov.sg",
+      "rep": {"first": "Eileen", "last": "Poh", "note": "October 2020-present"},
+      "council": true
+    },
+    {"name": "Slovakia", "slug": "slovakia", "caa": "caa.sk", "mfa": "mzv.sk", "rep": null},
+    {"name": "Slovenia", "slug": "slovenia", "caa": "caa.si", "mfa": "mzz.gov.si", "rep": null},
+    {"name": "Solomon Islands", "slug": "solomonislands", "caa": "mict.gov.sb", "mfa": "mfact.gov.sb", "rep": null},
+    {"name": "Somalia", "slug": "somalia", "caa": "caas.gov.so", "mfa": "mfa.gov.so", "rep": null},
+    {
+      "name": "South Africa",
+      "slug": "southafrica",
+      "caa": "caa.co.za",
+      "mfa": "dirco.gov.za",
+      "rep": {"first": "Luvuyo Lulama", "last": "Gqeke", "note": "October 2023-present"},
+      "council": true
+    },
+    {"name": "South Sudan", "slug": "southsudan", "caa": "moci.gov.ss", "mfa": "mfa.gov.ss", "rep": null},
+    {
+      "name": "Spain",
+      "slug": "spain",
+      "caa": "seguridadaerea.es",
+      "mfa": "exteriores.gob.es",
+      "rep": {"first": "Angel-Luis", "last": "Arias", "note": "June 2023-present"},
+      "council": true
+    },
+    {"name": "Sri Lanka", "slug": "srilanka", "caa": "caa.gov.lk", "mfa": "mfa.gov.lk", "rep": null},
+    {"name": "Sudan", "slug": "sudan", "caa": "scaa.sd", "mfa": "mfa.gov.sd", "rep": null},
+    {"name": "Suriname", "slug": "suriname", "caa": "dca.sr", "mfa": "minbuza.sr", "rep": null},
+    {
+      "name": "Sweden",
+      "slug": "sweden",
+      "caa": "transportstyrelsen.se",
+      "mfa": "ud.se",
+      "rep": {"first": "Anders", "last": "Leufgård", "note": "Alternate Representative / Air Navigation Commission"},
+      "delegation_group": {"name": "NORDICAO", "represented_by": "Denmark", "council_rep": "Henrik Ellermann"}
+    },
+    {
+      "name": "Switzerland",
+      "slug": "switzerland",
+      "caa": "bazl.admin.ch",
+      "mfa": "eda.admin.ch",
+      "rep": {"first": "Helena", "last": "Hallauer-Hess", "note": "September 2025-present"},
+      "council": true
+    },
+    {"name": "Syrian Arab Republic", "slug": "syria", "caa": "dgca.gov.sy", "mfa": "mofa.gov.sy", "rep": null},
+    {"name": "Tajikistan", "slug": "tajikistan", "caa": "caa.tj", "mfa": "mfa.tj", "rep": null},
+    {"name": "Tanzania", "slug": "tanzania", "caa": "tcaa.go.tz", "mfa": "foreign.go.tz", "rep": null},
+    {"name": "Thailand", "slug": "thailand", "caa": "caat.or.th", "mfa": "mfa.go.th", "rep": null},
+    {"name": "Timor-Leste", "slug": "timorleste", "caa": "anacl.gov.tl", "mfa": "mne.gov.tl", "rep": null},
+    {"name": "Togo", "slug": "togo", "caa": "anac.tg", "mfa": "mae.tg", "rep": null},
+    {"name": "Tonga", "slug": "tonga", "caa": "caat.gov.to", "mfa": "foreignaffairs.gov.to", "rep": null},
+    {"name": "Trinidad and Tobago", "slug": "trinidadtobago", "caa": "caa.gov.tt", "mfa": "foreign.gov.tt", "rep": null},
+    {"name": "Tunisia", "slug": "tunisia", "caa": "oaca.nat.tn", "mfa": "diplomatie.gov.tn", "rep": null},
+    {"name": "Turkey", "slug": "turkey", "caa": "shgm.gov.tr", "mfa": "mfa.gov.tr", "rep": null},
+    {"name": "Turkmenistan", "slug": "turkmenistan", "caa": "mininfra.gov.tm", "mfa": "mfa.gov.tm", "rep": null},
+    {"name": "Tuvalu", "slug": "tuvalu", "caa": "tuvalu.tv", "mfa": "tuvaluislands.com", "rep": null},
+    {
+      "name": "Uganda",
+      "slug": "uganda",
+      "caa": "caa.co.ug",
+      "mfa": "mofa.go.ug",
+      "rep": {"first": "John Wycliffe Kabbs", "last": "Twijuke", "note": "October 2025-present"},
+      "council": true
+    },
+    {"name": "Ukraine", "slug": "ukraine", "caa": "avia.gov.ua", "mfa": "mfa.gov.ua", "rep": null},
+    {
+      "name": "United Arab Emirates",
+      "slug": "uae",
+      "caa": "gcaa.gov.ae",
+      "mfa": "mofa.gov.ae",
+      "rep": {"first": "Saeed Mohammad", "last": "Al Suwaidi", "note": "October 2020-present"},
+      "council": true
+    },
+    {
+      "name": "United Kingdom",
+      "slug": "uk",
+      "caa": "caa.co.uk",
+      "mfa": "gov.uk",
+      "rep": {"first": "William", "last": "Gatward", "note": "Appointed January 2026"},
+      "council": true
+    },
+    {
+      "name": "United States",
+      "slug": "us",
+      "caa": "faa.gov",
+      "mfa": "state.gov",
+      "rep": {"first": "Andrew M.", "last": "Veprek", "note": "Acting Permanent Representative to ICAO"},
+      "council": true
+    },
+    {
+      "name": "Uruguay",
+      "slug": "uruguay",
+      "caa": "dinacia.gub.uy",
+      "mfa": "mrree.gub.uy",
+      "rep": {"first": "Gustavo", "last": "Álvarez Goyoaga", "note": "October 2025-present"},
+      "council": true
+    },
+    {"name": "Uzbekistan", "slug": "uzbekistan", "caa": "caau.uz", "mfa": "mfa.uz", "rep": null},
+    {"name": "Vanuatu", "slug": "vanuatu", "caa": "caav.vu", "mfa": "foreignaffairs.gov.vu", "rep": null},
+    {"name": "Venezuela", "slug": "venezuela", "caa": "inac.gob.ve", "mfa": "mppre.gob.ve", "rep": null},
+    {"name": "Viet Nam", "slug": "vietnam", "caa": "caa.gov.vn", "mfa": "mofa.gov.vn", "rep": null},
+    {"name": "Yemen", "slug": "yemen", "caa": "caacy.gov.ye", "mfa": "mofa.gov.ye", "rep": null},
+    {"name": "Zambia", "slug": "zambia", "caa": "dcam.gov.zm", "mfa": "mfa.gov.zm", "rep": null},
+    {"name": "Zimbabwe", "slug": "zimbabwe", "caa": "caaz.co.zw", "mfa": "zimfa.gov.zw", "rep": null}
+  ],
+  "icao_offices": {
+    "hq": {
+      "email": "icaohq@icao.int",
+      "phone": "+1 514-954-8219",
+      "desc": "ICAO Headquarters",
+      "addr": "999 Robert-Bourassa Blvd, Montréal, QC H3C 5H7, Canada"
+    },
+    "regional": {
+      "Bangkok – Asia & Pacific (APAC)": {
+        "email": "apac@icao.int",
+        "phone": "+66 2 537 8189",
+        "addr": "252/1 Vibhavadi-Rangsit Rd, Bangkok 10900, Thailand"
+      },
+      "Beijing – APAC Sub-Office": {
+        "email": "apac-rso@icao.int",
+        "phone": "+86-10-64557169",
+        "addr": "No.9 Erwei Rd, Shunyi District, Beijing 100621"
+      },
+      "Mexico City – NACC": {
+        "email": "icaonacc@icao.int",
+        "phone": "+52 55 52 50 32 11",
+        "addr": "Calz. Mariano Escobedo No. 526, Col. Anzures, C.P. 11590, México"
+      },
+      "Lima – South America (SAM)": {
+        "email": "icaosam@icao.int",
+        "phone": "+51 1 611 8686",
+        "addr": "Av. Víctor Andrés Belaúnde No. 147, San Isidro, Lima, Peru"
+      },
+      "Nairobi – Eastern & Southern Africa (ESAF)": {
+        "email": "icaoesaf@icao.int",
+        "phone": "+254 20 7622 395",
+        "addr": "Block 4, South Wing, GF, UNON, Limuru Rd, Gigiri, Nairobi, Kenya"
+      },
+      "Dakar – Western & Central Africa (WACAF)": {
+        "email": "icaowacaf@dakar.icao.int",
+        "phone": "+221 33 869 24 24",
+        "addr": "Leopold Sedar Senghor Int'l Airport, P.O. Box 38050 YOFF, Dakar, Senegal"
+      },
+      "Paris – Europe & North Atlantic (EUR/NAT)": {
+        "email": "icaoeurnat@icao.int",
+        "phone": "+33 1 46 41 85 85",
+        "addr": "3 bis villa Émile Bergerat, 92522 Neuilly-sur-Seine Cedex, France"
+      },
+      "Cairo – Middle East (MID)": {
+        "email": "icaomid@icao.int",
+        "phone": "+20 2 2267 4840",
+        "addr": "Egyptian Civil Aviation Complex, Cairo Airport Rd, Cairo, Egypt"
+      }
+    },
+    "department": {
+      "Media & Press Relations": {
+        "email": "media.relations@icao.int",
+        "phone": "+1 514-954-8219",
+        "note": "Allow 1-2 weeks advance notice"
+      },
+      "Aviation Training & Development": {
+        "email": "aviationtraining@icao.int",
+        "phone": "+1 514-954-8219",
+        "note": "Courses, certification, online modules"
+      },
+      "Products, Sales & Publications": {
+        "email": "sales@icao.int",
+        "phone": "+1 514-954-8219",
+        "note": "Technical documents, databases"
+      },
+      "Data Support (CADS)": {
+        "email": "cads@icao.int",
+        "phone": "+1 514-954-8219",
+        "note": "Database & statistics access"
+      },
+      "Web & Technical Support": {
+        "email": "web@icao.int",
+        "phone": "+1 514-954-8219",
+        "note": "Website access, online resources"
+      },
+      "Procurement & Tenders": {
+        "email": "e-tender@icao.int",
+        "phone": "+1 514-954-8219",
+        "note": "Vendor registration, Quantum Portal"
+      }
+    },
+    "leadership": {
+      "Council President – Toshiyuki Onuma (Japan)": {
+        "email": "icaohq@icao.int",
+        "phone": "+1 514-954-8219",
+        "note": "Term: 1 Jan 2026 – 31 Dec 2028"
+      },
+      "Secretary General – Juan Carlos Salazar (Colombia)": {
+        "email": "icaohq@icao.int",
+        "phone": "+1 514-954-8219",
+        "note": "Term: Aug 2024 – Aug 2027"
+      }
+    }
+  }
+}
