@@ -50,7 +50,10 @@ async function init() {
       STATES.forEach(st => {
         const o = document.createElement('option');
         o.value = st.slug; 
-        o.textContent = st.name + (st.council ? ' (Council Member)' : '');
+        
+        // Updated to use the airplane symbol
+        o.textContent = st.name + (st.council ? ' ✈' : '');
+        
         s.appendChild(o);
         
         if (st.rep && st.rep.note) {
