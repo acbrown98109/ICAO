@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>SAC Contact Directory – Email Generator</title>
+<title>SAC ICAO Contact Directory – Email Generator</title>
 <style>
 *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
@@ -65,10 +65,10 @@ header {
   display: flex;
   flex-direction: column;
 }
-.brand-sac {
+.brand- {
   font-size: 2rem;
   font-weight: 300;
-  color: var(--sac-logo-blue);
+  color: var(---logo-blue);
   line-height: 1;
   letter-spacing: -0.5px;
 }
@@ -76,7 +76,7 @@ header {
   font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--sac-dark-blue);
+  color: var(---dark-blue);
   letter-spacing: 1px;
   margin-top: 4px;
 }
@@ -93,7 +93,7 @@ header {
 }
 .tab-btn {
   background: transparent;
-  color: var(--sac-dark-blue);
+  color: var(---dark-blue);
   border: none;
   padding: 18px 24px;
   font-size: 0.95rem;
@@ -109,19 +109,19 @@ header {
   display: inline-block;
   width: 6px;
   height: 6px;
-  border-right: 2px solid var(--sac-dark-blue);
-  border-bottom: 2px solid var(--sac-dark-blue);
+  border-right: 2px solid var(---dark-blue);
+  border-bottom: 2px solid var(---dark-blue);
   transform: rotate(45deg);
   margin-bottom: 3px;
 }
-.tab-btn:hover { background: var(--sac-light-gray); }
-.tab-btn.active { background: var(--sac-active-bg); }
+.tab-btn:hover { background: var(---light-gray); }
+.tab-btn.active { background: var(---active-bg); }
 
 /* BREADCRUMBS */
 .breadcrumb-bar {
   padding: 16px 0 24px 0;
   font-size: 0.85rem;
-  color: var(--sac-dark-blue);
+  color: var(---dark-blue);
 }
 .breadcrumb-bar a {
   color: var(--text-main);
@@ -145,13 +145,13 @@ header {
 .card h2 {
   font-size: 1.4rem;
   font-weight: 300;
-  color: var(--sac-dark-blue);
+  color: var(---dark-blue);
   margin-bottom: 24px;
 }
 .card h3 {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--sac-dark-blue);
+  color: var(---dark-blue);
   margin: 24px 0 12px;
 }
 
@@ -175,8 +175,8 @@ input, select {
 }
 input:focus, select:focus {
   outline: none;
-  border-color: var(--sac-logo-blue);
-  box-shadow: 0 0 0 1px var(--sac-logo-blue);
+  border-color: var(---logo-blue);
+  box-shadow: 0 0 0 1px var(---logo-blue);
 }
 .hint { font-size: 0.8rem; color: var(--text-muted); margin-top: 6px; }
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -197,17 +197,17 @@ input:focus, select:focus {
 .ac-dropdown.open { display: block; }
 .ac-item {
   padding: 10px 14px; cursor: pointer;
-  border-bottom: 1px solid var(--sac-light-gray);
+  border-bottom: 1px solid var(---light-gray);
 }
 .ac-item:last-child { border-bottom: none; }
-.ac-item:hover, .ac-item.focused { background: var(--sac-active-bg); }
-.ac-item .ac-country { font-weight: 600; color: var(--sac-dark-blue); font-size: 0.95rem; }
+.ac-item:hover, .ac-item.focused { background: var(---active-bg); }
+.ac-item .ac-country { font-weight: 600; color: var(---dark-blue); font-size: 0.95rem; }
 .ac-item .ac-title { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
 
 /* RESULTS AREA */
 .result-box {
-  background: var(--sac-light-gray);
-  border-left: 4px solid var(--sac-logo-blue);
+  background: var(---light-gray);
+  border-left: 4px solid var(---logo-blue);
   padding: 24px;
   margin-top: 24px;
   display: none;
@@ -220,7 +220,7 @@ input:focus, select:focus {
 }
 .result-email {
   font-family: 'Consolas', 'Courier New', monospace;
-  font-size: 1.15rem; color: var(--sac-dark-blue);
+  font-size: 1.15rem; color: var(---dark-blue);
   background: var(--white);
   border: 1px solid #cccccc;
   padding: 12px 16px;
@@ -234,7 +234,7 @@ input:focus, select:focus {
 .result-alts .alt-row {
   display: flex; flex-direction: column; gap: 4px;
   margin-bottom: 12px; padding-bottom: 12px;
-  border-bottom: 1px solid var(--sac-light-gray);
+  border-bottom: 1px solid var(---light-gray);
 }
 .result-alts .alt-row:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
 .result-alts .alt-label {
@@ -243,11 +243,11 @@ input:focus, select:focus {
 }
 .result-alts .alt-addr {
   font-family: 'Consolas', 'Courier New', monospace;
-  font-size: 0.95rem; color: var(--sac-logo-blue);
+  font-size: 0.95rem; color: var(---logo-blue);
   word-break: break-all;
 }
 .result-meta { font-size: 0.85rem; color: var(--text-main); line-height: 1.8; margin-bottom: 16px;}
-.result-meta strong { color: var(--sac-dark-blue); }
+.result-meta strong { color: var(---dark-blue); }
 
 /* ALERTS & INFO BOXES */
 .warn-box {
@@ -257,15 +257,15 @@ input:focus, select:focus {
 }
 .warn-box.show { display: block; }
 .lookup-box {
-  background: var(--sac-light-gray); border: 1px solid #cccccc;
+  background: var(---light-gray); border: 1px solid #cccccc;
   padding: 16px; font-size: 0.85rem;
   color: var(--text-main); margin-top: 12px; display: none; line-height: 1.6;
 }
 .lookup-box.show { display: block; }
-.lookup-box a { color: var(--sac-logo-blue); font-weight: 600; text-decoration: none;}
+.lookup-box a { color: var(---logo-blue); font-weight: 600; text-decoration: none;}
 .lookup-box a:hover { text-decoration: underline; }
 .info-box {
-  background: var(--sac-light-gray); border-left: 4px solid var(--text-muted);
+  background: var(---light-gray); border-left: 4px solid var(--text-muted);
   padding: 16px 20px; font-size: 0.9rem;
   color: var(--text-main); line-height: 1.7; margin-bottom: 24px;
 }
@@ -277,12 +277,12 @@ input:focus, select:focus {
   font-size: 0.9rem; font-weight: 700;
   cursor: pointer; transition: background 0.2s;
 }
-.btn-primary { background: var(--sac-logo-blue); color: var(--white); }
-.btn-primary:hover { background: var(--sac-dark-blue); }
-.btn-teal { background: var(--sac-dark-blue); color: var(--white); }
+.btn-primary { background: var(---logo-blue); color: var(--white); }
+.btn-primary:hover { background: var(---dark-blue); }
+.btn-teal { background: var(---dark-blue); color: var(--white); }
 .btn-teal:hover { background: #002244; }
 .btn-outline { background: transparent; border-color: #cccccc; color: var(--text-main); }
-.btn-outline:hover { background: var(--sac-light-gray); }
+.btn-outline:hover { background: var(---light-gray); }
 
 .toast {
   display: none; background: var(--success-bg); border: 1px solid #c3e6cb;
@@ -295,10 +295,10 @@ input:focus, select:focus {
 .badge {
   display: inline-block; padding: 2px 6px;
   font-size: 0.7rem; font-weight: 700; margin-right: 6px;
-  text-transform: uppercase; background: var(--sac-light-gray); color: var(--text-muted);
+  text-transform: uppercase; background: var(---light-gray); color: var(--text-muted);
   border: 1px solid #cccccc;
 }
-.badge-blue { background: var(--sac-active-bg); color: var(--sac-dark-blue); border-color: #b8daff; }
+.badge-blue { background: var(---active-bg); color: var(---dark-blue); border-color: #b8daff; }
 .badge-green { background: var(--success-bg); color: var(--success-text); border-color: #c3e6cb; }
 
 /* GRID CARDS (DIRECTORY & FORMATS) */
@@ -309,37 +309,37 @@ input:focus, select:focus {
   border: 1px solid var(--gray-border); background: var(--white);
   padding: 20px;
 }
-.fmt-card h4, .dir-card h4 { font-size: 0.95rem; color: var(--sac-dark-blue); margin-bottom: 12px; }
+.fmt-card h4, .dir-card h4 { font-size: 0.95rem; color: var(---dark-blue); margin-bottom: 12px; }
 .fmt-card p, .dir-card p { font-size: 0.85rem; color: var(--text-main); line-height: 1.6; margin-bottom: 8px; }
 .fmt-card code {
   display: block; font-family: 'Consolas', monospace; font-size: 0.85rem;
-  color: var(--sac-dark-blue); background: var(--sac-light-gray); border: 1px solid var(--gray-border);
+  color: var(---dark-blue); background: var(---light-gray); border: 1px solid var(--gray-border);
   padding: 8px 12px; margin-bottom: 12px; word-break: break-all;
 }
-.dir-card a { color: var(--sac-logo-blue); text-decoration: none; }
+.dir-card a { color: var(---logo-blue); text-decoration: none; }
 .dir-card a:hover { text-decoration: underline; }
 
 .office-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-top: 16px; }
 .office-tile {
   border: 1px solid var(--gray-border); background: var(--white);
-  border-top: 4px solid var(--sac-logo-blue);
+  border-top: 4px solid var(---logo-blue);
   padding: 20px;
 }
-.office-tile strong { display: block; color: var(--sac-dark-blue); font-size: 0.95rem; margin-bottom: 10px; }
+.office-tile strong { display: block; color: var(---dark-blue); font-size: 0.95rem; margin-bottom: 10px; }
 .office-tile span { display: block; font-size: 0.85rem; color: var(--text-main); margin-bottom: 4px; line-height: 1.5; }
-.office-tile a { color: var(--sac-logo-blue); text-decoration: none; }
+.office-tile a { color: var(---logo-blue); text-decoration: none; }
 
 /* LISTS & DIVIDERS */
 .step-list { list-style: none; margin-top: 16px; padding-left: 20px; }
 .step-list li { margin-bottom: 12px; font-size: 0.9rem; color: var(--text-main); line-height: 1.6; }
-.step-list li strong { color: var(--sac-dark-blue); }
+.step-list li strong { color: var(---dark-blue); }
 .section-hr { border: none; border-top: 1px solid var(--gray-border); margin: 32px 0; }
 
 footer { text-align: center; color: var(--text-muted); margin-top: 48px; font-size: 0.85rem; border-top: 1px solid var(--gray-border); padding-top: 24px; }
 
 @media(max-width: 640px) { 
   .two-col { grid-template-columns: 1fr; } 
-  .brand-sac { font-size: 1.5rem; } 
+  .brand- { font-size: 1.5rem; } 
   .tab-btn { width: 100%; border-bottom: 1px solid var(--gray-border); }
 }
 </style>
@@ -351,7 +351,7 @@ footer { text-align: center; color: var(--text-muted); margin-top: 48px; font-si
 <header>
   <div class="wrap header-flex">
     <div class="logo-area">
-      <!-- SAC Custom SVG Logo: Open Textbook & Commercial Jet -->
+      <!--  Custom SVG Logo: Open Textbook & Commercial Jet -->
       <svg width="56" height="56" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
         <!-- Open Book Base (Aviation Law/Studies) -->
         <path d="M8 44C8 44 18 40 32 44V56C18 52 8 56 8 56V44Z" fill="none" stroke="#003b75" stroke-width="2.5" stroke-linejoin="round"/>
